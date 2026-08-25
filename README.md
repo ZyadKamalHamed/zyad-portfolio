@@ -1,9 +1,9 @@
-# Zyad Kamal Hamed — Portfolio
+# Zyad Kamal Hamed · Portfolio
 
 Single-page portfolio under four service buckets: web design, static asset
 rollouts, platform design, and AI solutions.
 
-Static site — no build step. `index.html` + `styles.css` + `script.js`,
+Static site, no build step. `index.html` + `styles.css` + `script.js`,
 optimised imagery in `img/`. Deployed on Vercel.
 
 `assets/` holds the raw source exports (Figma renders, full-resolution

@@ -1,5 +1,5 @@
 /* ============================================================
-   Zyad Kamal Hamed — Portfolio
+   Zyad Kamal Hamed · Portfolio
    Shell: bone paper, ink type, print-production annotations.
    Display: Anton · Body: Instrument Sans · Spec: IBM Plex Mono
    ============================================================ */
@@ -254,7 +254,7 @@ figure.frame, figure.art { margin: 0; }
 }
 @media (max-width: 860px) { .art-strip { grid-template-columns: repeat(2, 1fr); } }
 
-/* INDRO mosaic — true aspect ratios in a masonry flow */
+/* INDRO mosaic: true aspect ratios in a masonry flow */
 .mosaic {
   columns: 3;
   column-gap: clamp(12px, 2vw, 24px);
