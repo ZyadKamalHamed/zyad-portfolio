@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Zyad Kamal Hamed &middot; Portfolio</title>
-<meta name="description" content="The portfolio of Zyad Kamal Hamed. Design, software, and AI solutions, designed and built in Sydney.">
-<meta property="og:title" content="Zyad Kamal Hamed &middot; Portfolio">
-<meta property="og:description" content="Web design, static asset rollouts, platform design, and AI solutions. Designed and built in Sydney.">
+<title>Zyad Kamal Hamed &middot; Software, Machine Learning &amp; Design</title>
+<meta name="description" content="Zyad Kamal Hamed builds machine learning systems and designs the interfaces around them. Final-year Bachelor of AI at UTS and the sole technical hire at The General Store, Sydney.">
+<meta property="og:title" content="Zyad Kamal Hamed &middot; Software, Machine Learning &amp; Design">
+<meta property="og:description" content="Machine learning, computer vision and full-stack systems on one side. Brand-led websites, product design and campaign systems on the other.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://zyad-portfolio-sage.vercel.app/">
-<meta property="og:image" content="https://zyad-portfolio-sage.vercel.app/img/comp-train.jpg">
+<meta property="og:image" content="https://zyad-portfolio-sage.vercel.app/img/courtiq-keypoints.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="https://zyad-portfolio-sage.vercel.app/">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2316151A'/%3E%3Ctext x='16' y='23' font-family='Arial Black,sans-serif' font-size='20' font-weight='900' fill='%23F5B301' text-anchor='middle'%3EZ%3C/text%3E%3C/svg%3E">
@@ -21,286 +21,412 @@
 </head>
 <body>
 
-<a class="skip-link" href="#web">Skip to work</a>
+<a class="skip-link" href="#develop">Skip to work</a>
 
-<!-- ============ HERO / MANIFEST ============ -->
-<header class="hero" id="top">
+<!-- ============ LANDING: MASTHEAD + SPLIT ============ -->
+<div class="landing" id="top">
+
   <div class="crop crop-tl" aria-hidden="true"></div>
   <div class="crop crop-tr" aria-hidden="true"></div>
   <div class="crop crop-bl" aria-hidden="true"></div>
   <div class="crop crop-br" aria-hidden="true"></div>
 
-  <p class="hero-overline mono">Portfolio&ensp;&middot;&ensp;Sydney, Australia</p>
+  <header class="masthead">
+    <p class="hero-overline mono">Sydney, Australia&ensp;&middot;&ensp;Graduating December 2026</p>
 
-  <h1 class="hero-name">
-    <span>Zyad</span>
-    <span>Kamal</span>
-    <span>Hamed</span>
-  </h1>
+    <div class="masthead-row">
+      <h1 class="hero-name">Zyad Kamal Hamed</h1>
+      <nav class="masthead-links mono" aria-label="Contact">
+        <a href="mailto:zyad2408@live.com.au">zyad2408@live.com.au</a>
+        <a href="https://github.com/ZyadKamalHamed" rel="noopener">GitHub &nearr;</a>
+      </nav>
+    </div>
 
-  <p class="hero-lede">Design, software, &amp; AI solutions. I take brands, campaigns, platforms, and AI systems from first sketch to shipped, and stay for every revision after.</p>
+    <p class="hero-lede">I build machine learning systems and design the interfaces around them. Final-year Bachelor of AI at UTS, and the sole technical hire at The General Store, an advertising and interior architecture agency in Surry Hills.</p>
+  </header>
 
-  <nav class="manifest" aria-label="Services index">
-    <p class="manifest-head mono">Index of services</p>
-    <a class="manifest-row" href="#web">
-      <span class="mono m-no">S.01</span>
-      <span class="m-name">Web Design</span>
-      <span class="mono m-meta">By George &middot; Z1R0</span>
-      <span class="mono m-count">2 properties</span>
-    </a>
-    <a class="manifest-row" href="#rollouts">
-      <span class="mono m-no">S.02</span>
-      <span class="m-name">Static Asset Rollouts</span>
-      <span class="mono m-meta">Freedom &middot; OMA Indro</span>
-      <span class="mono m-count">70+ artworks</span>
-    </a>
-    <a class="manifest-row" href="#platform">
-      <span class="mono m-no">S.03</span>
-      <span class="m-name">Platform Design</span>
-      <span class="mono m-meta">SafeSize &times; The General Store</span>
-      <span class="mono m-count">1 platform</span>
-    </a>
-    <a class="manifest-row" href="#ai">
-      <span class="mono m-no">S.04</span>
-      <span class="m-name">AI Solutions</span>
-      <span class="mono m-meta">JARVIS</span>
-      <span class="mono m-count">1 system</span>
-    </a>
+  <nav class="split" aria-label="Work by discipline">
+
+    <div class="panel">
+      <div class="panel-inner">
+        <h2 class="panel-title"><a class="panel-link" href="#develop">Develop</a></h2>
+        <p class="panel-lede">Machine learning, computer vision, and full-stack systems.</p>
+        <ol class="panel-list">
+          <li><a href="#safesize"><span class="pl-no mono">01</span><span class="pl-name">SafeSize Triage</span><span class="pl-meta mono">Platform design, Postgres security</span></a></li>
+          <li><a href="#courtiq"><span class="pl-no mono">02</span><span class="pl-name">CourtIQ</span><span class="pl-meta mono">Computer vision, pose estimation</span></a></li>
+          <li><a href="#jarvis"><span class="pl-no mono">03</span><span class="pl-name">JARVIS</span><span class="pl-meta mono">Agent system, zero-dependency Node</span></a></li>
+          <li><a href="#rag"><span class="pl-no mono">04</span><span class="pl-name">UTS FEIT RAG Chatbot</span><span class="pl-meta mono">Retrieval, evaluation, LangChain</span></a></li>
+          <li><a href="#bygeorge"><span class="pl-no mono">05</span><span class="pl-name">By George</span><span class="pl-meta mono">Designed and built, also under Design</span></a></li>
+        </ol>
+        <p class="panel-cta mono" aria-hidden="true">All development work &nearr;</p>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-inner">
+        <h2 class="panel-title"><a class="panel-link" href="#design">Design</a></h2>
+        <p class="panel-lede">Brand-led websites, product design, and campaign systems.</p>
+        <ol class="panel-list">
+          <li><a href="#bygeorge"><span class="pl-no mono">01</span><span class="pl-name">By George</span><span class="pl-meta mono">Site design and build, live</span></a></li>
+          <li><a href="#z1r0"><span class="pl-no mono">02</span><span class="pl-name">Z1R0</span><span class="pl-meta mono">Startup web design, Figma</span></a></li>
+          <li><a href="#freedom"><span class="pl-no mono">03</span><span class="pl-name">Freedom</span><span class="pl-meta mono">Campaign system, 40+ artworks</span></a></li>
+          <li><a href="#indro"><span class="pl-no mono">04</span><span class="pl-name">OMA Indro</span><span class="pl-meta mono">Templated rollout, 30+ placements</span></a></li>
+        </ol>
+        <p class="panel-cta mono" aria-hidden="true">All design work &nearr;</p>
+      </div>
+    </div>
+
   </nav>
-</header>
+</div>
 
 <main>
 
-<!-- ============ S.01 WEB DESIGN ============ -->
-<section class="service" id="web">
-  <header class="spec reveal">
-    <div class="spec-row">
-      <span class="mono spec-no">Service 01</span>
-      <h2 class="spec-title">Web Design</h2>
-    </div>
-    <dl class="spec-meta mono">
-      <div><dt>Clients</dt><dd>By George &middot; Z1R0</dd></div>
-      <div><dt>Deliverables</dt><dd>Design &middot; Build &middot; Deploy</dd></div>
-    </dl>
+<!-- ============ DEVELOP ============ -->
+<section class="discipline" id="develop">
+  <header class="discipline-head reveal">
+    <h2 class="discipline-title">Develop</h2>
+    <p class="discipline-lede">Four systems: a production support platform, a computer vision pipeline, a personal agent OS, and a retrieval chatbot. Each note below says what I decided, not just what it does.</p>
   </header>
 
-  <article class="case reveal">
-    <div class="case-text">
-      <h3>By George! Food &amp; Coffee</h3>
-      <p>A neighbourhood food and coffee shop in Croydon Park, Sydney. Designed and built as one fast page: menu, gallery, retail, delivery, all in the brand&rsquo;s own hand-drawn voice, then kept current through every menu change since.</p>
-      <p class="mono case-tags">HTML &middot; CSS &middot; JS &middot; Vercel</p>
-      <a class="live-link mono" href="https://bygeorgecoffee.com.au/" rel="noopener">Visit live site &nearr;</a>
-    </div>
-    <figure class="frame browser">
-      <figcaption class="mono dim">bygeorgecoffee.com.au &middot; live</figcaption>
-      <button class="zoom" data-full="img/bygeorge-hero.jpg" aria-label="View By George site full size">
-        <img src="img/bygeorge-hero.jpg" width="2000" height="1250" alt="By George website: cream page with red hand-lettered logo, nav, and a hand holding an iced coffee" fetchpriority="high">
-      </button>
-    </figure>
-  </article>
-
-  <article class="case reveal">
-    <div class="case-text">
-      <h3>Z1R0</h3>
-      <p>Landing and product pages for Z1R0, a startup 3D-printing custom-fit footwear from a scan of your feet. Dark, editorial layouts designed in Figma around the scan-customise-print story, ready for a motion-heavy build. Scroll inside each page.</p>
-      <p class="mono case-tags">Figma &middot; Art direction &middot; UX copy</p>
-    </div>
-    <div class="scroll-pair">
-      <figure class="frame scrollframe">
-        <figcaption class="mono dim">1920 &times; 10353 &middot; Homepage</figcaption>
-        <div class="scrollwin" role="region" tabindex="0" aria-label="Z1R0 homepage design, scrollable">
-          <img src="img/z1r0-home.jpg" width="1400" height="7549" alt="Z1R0 homepage design: black editorial page with red 3D-printed sneaker hero" loading="lazy">
-        </div>
-      </figure>
-      <figure class="frame scrollframe">
-        <figcaption class="mono dim">1920 &times; 2622 &middot; Product page</figcaption>
-        <div class="scrollwin" role="region" tabindex="0" aria-label="Z1R0 product page design, scrollable">
-          <img src="img/z1r0-product.jpg" width="1904" height="2600" alt="Z1R0 product page design: The Arjé sneaker in coral with product cards" loading="lazy">
-        </div>
-      </figure>
-    </div>
-  </article>
-</section>
-
-<!-- ============ S.02 STATIC ASSET ROLLOUTS ============ -->
-<section class="service" id="rollouts">
-  <header class="spec reveal">
-    <div class="spec-row">
-      <span class="mono spec-no">Service 02</span>
-      <h2 class="spec-title">Static Asset Rollouts</h2>
-    </div>
-    <dl class="spec-meta mono">
-      <div><dt>Clients</dt><dd>Freedom &middot; OMA Indro</dd></div>
-      <div><dt>Deliverables</dt><dd>OOH &middot; Social &middot; Film &middot; In-situ</dd></div>
-    </dl>
-  </header>
-
-  <article class="campaign reveal">
-    <div class="case-text wide">
-      <h3>Freedom: Absolutely Everything</h3>
-      <p>A full campaign asset system for Freedom&rsquo;s Absolutely Everything sale. One master layout rolls out across out-of-home, social, film end-frames, and product price tiles: more than forty artworks, each one press-ready at its exact placement size.</p>
-    </div>
-    <figure class="art hero-art">
-      <figcaption class="mono dim">In-situ &middot; rail digital billboard</figcaption>
-      <button class="zoom" data-full="img/comp-train.jpg" aria-label="View escalator billboard artwork full size">
-        <img src="img/comp-train.jpg" width="1600" height="900" alt="Freedom campaign billboard above station escalators: red panel with tan leather sofa" loading="lazy">
-      </button>
-    </figure>
-    <div class="art-duo">
-      <figure class="art">
-        <figcaption class="mono dim">In-situ &middot; street furniture, night</figcaption>
-      <button class="zoom" data-full="img/comp-night.jpg" aria-label="View night street panel artwork full size">
-          <img src="img/comp-night.jpg" width="1600" height="900" alt="Freedom campaign on a street kiosk screen at night" loading="lazy">
-        </button>
-      </figure>
-      <figure class="art">
-        <figcaption class="mono dim">In-situ &middot; centre digital panel</figcaption>
-      <button class="zoom" data-full="img/comp-shopper.jpg" aria-label="View shopping centre panel artwork full size">
-          <img src="img/comp-shopper.jpg" width="1600" height="900" alt="Freedom campaign on a shopping centre digital panel with passing shoppers" loading="lazy">
-        </button>
-      </figure>
-    </div>
-    <div class="art-strip">
-      <figure class="art">
-        <figcaption class="mono dim">1080 &times; 1920 &middot; OOH P+P</figcaption>
-      <button class="zoom" data-full="img/ooh-portrait-pp.jpg" aria-label="View portrait OOH artwork full size">
-          <img src="img/ooh-portrait-pp.jpg" width="788" height="1400" alt="Portrait artwork: 30% off Zara leather sofa, save $1,200" loading="lazy">
-        </button>
-      </figure>
-      <figure class="art">
-        <figcaption class="mono dim">1080 &times; 1080 &middot; Social</figcaption>
-      <button class="zoom" data-full="img/social-square.jpg" aria-label="View square social artwork full size">
-          <img src="img/social-square.jpg" width="1080" height="1080" alt="Square social artwork: red border, leather sofa, 20-60% off everything" loading="lazy">
-        </button>
-      </figure>
-      <figure class="art">
-        <figcaption class="mono dim">1080 &times; 1080 &middot; Price tile</figcaption>
-      <button class="zoom" data-full="img/social-product.jpg" aria-label="View product tile artwork full size">
-          <img src="img/social-product.jpg" width="1080" height="1080" alt="Product price tile: Fira coffee table, save $500, $1499" loading="lazy">
-        </button>
-      </figure>
-      <figure class="art">
-        <figcaption class="mono dim">1920 &times; 1080 &middot; Film</figcaption>
-      <button class="zoom" data-full="img/film-frame.jpg" aria-label="View film end-frame artwork full size">
-          <img src="img/film-frame.jpg" width="1600" height="900" alt="Film end-frame: Margaux dresser beside red panel, save $500" loading="lazy">
-        </button>
-      </figure>
-    </div>
-  </article>
-
-  <article class="campaign reveal">
-    <div class="case-text wide">
-      <h3>OMA Indro: Find Me At INDRO!</h3>
-      <p>A templated rollout for Indooroopilly&rsquo;s grocery campaign: hero image, headline, and brand marks flow from one master into thirty-plus placements, from a 288&nbsp;&times;&nbsp;420 web tile to full 1920&nbsp;&times;&nbsp;1080 screens. This round included a repair pass: eleven wide formats re-cropped in the source file so the photography frames the model correctly at every ratio.</p>
-    </div>
-    <div class="mosaic">
-      <figure class="art"><figcaption class="mono dim">1080 &times; 1920</figcaption><button class="zoom" data-full="img/story-1080x1920.jpg" aria-label="View 1080 by 1920 story artwork"><img src="img/story-1080x1920.jpg" width="788" height="1400" alt="Indro campaign story format: model in blue gown in front of grocery shelves" loading="lazy"></button></figure>
-      <figure class="art"><figcaption class="mono dim">840 &times; 400</figcaption><button class="zoom" data-full="img/banner-840x400.jpg" aria-label="View 840 by 400 banner artwork"><img src="img/banner-840x400.jpg" width="840" height="400" alt="Indro campaign banner format" loading="lazy"></button></figure>
-      <figure class="art"><figcaption class="mono dim">800 &times; 208 &middot; re-crop</figcaption><button class="zoom" data-full="img/leaderboard-800x208.jpg" aria-label="View 800 by 208 leaderboard artwork"><img src="img/leaderboard-800x208.jpg" width="800" height="208" alt="Indro campaign leaderboard, re-cropped to frame the model" loading="lazy"></button></figure>
-      <figure class="art"><figcaption class="mono dim">1440 &times; 1800</figcaption><button class="zoom" data-full="img/poster-1440x1800.jpg" aria-label="View 1440 by 1800 poster artwork"><img src="img/poster-1440x1800.jpg" width="1120" height="1400" alt="Indro campaign poster format" loading="lazy"></button></figure>
-      <figure class="art"><figcaption class="mono dim">1080 &times; 1080</figcaption><button class="zoom" data-full="img/square-1080.jpg" aria-label="View square artwork"><img src="img/square-1080.jpg" width="1080" height="1080" alt="Indro campaign square format" loading="lazy"></button></figure>
-      <figure class="art"><figcaption class="mono dim">1156 &times; 288 &middot; re-crop</figcaption><button class="zoom" data-full="img/wide-1156x288.jpg" aria-label="View 1156 by 288 wide banner artwork"><img src="img/wide-1156x288.jpg" width="1156" height="288" alt="Indro campaign wide banner, re-cropped to frame the model" loading="lazy"></button></figure>
-      <figure class="art"><figcaption class="mono dim">1080 &times; 1350</figcaption><button class="zoom" data-full="img/feed-1080x1350.jpg" aria-label="View 1080 by 1350 feed artwork"><img src="img/feed-1080x1350.jpg" width="1040" height="1300" alt="Indro campaign portrait feed format" loading="lazy"></button></figure>
-      <figure class="art"><figcaption class="mono dim">700 &times; 370 &middot; re-crop</figcaption><button class="zoom" data-full="img/grocer11-700x370.jpg" aria-label="View 700 by 370 tile artwork"><img src="img/grocer11-700x370.jpg" width="700" height="370" alt="Indro campaign tile format, re-cropped to frame the model" loading="lazy"></button></figure>
-      <figure class="art"><figcaption class="mono dim">1920 &times; 1080</figcaption><button class="zoom" data-full="img/grocer28-1920x1080.jpg" aria-label="View 1920 by 1080 screen artwork"><img src="img/grocer28-1920x1080.jpg" width="1600" height="900" alt="Indro campaign wide screen format" loading="lazy"></button></figure>
-    </div>
-  </article>
-</section>
-
-<!-- ============ S.03 PLATFORM DESIGN ============ -->
-<section class="service" id="platform">
-  <header class="spec reveal">
-    <div class="spec-row">
-      <span class="mono spec-no">Service 03</span>
-      <h2 class="spec-title">Platform Design</h2>
-    </div>
-    <dl class="spec-meta mono">
-      <div><dt>Project</dt><dd>SafeSize &times; The General Store</dd></div>
-      <div><dt>Deliverables</dt><dd>Discovery &middot; Data model &middot; UX &middot; Security</dd></div>
-    </dl>
-  </header>
-
-  <article class="case reveal">
-    <div class="case-text">
-      <h3>SafeSize Triage</h3>
-      <p>SafeSize 3D foot scanners sit on shop floors across Asia-Pacific. When one breaks, the fix used to start with a phone call. SafeSize Triage replaces that: machines report their own faults, store staff report through an AI chatbot, and every fault becomes a ticket routed to the right support tier across three countries.</p>
-      <p>Scoped and designed end to end, from discovery and data model to ticket lifecycle and 21 prototype screens, with a deployed Postgres schema where row-level security, not application code, decides who sees what. Every region choice keeps the data in Australia.</p>
-      <p class="mono case-tags">Next.js &middot; Supabase Postgres &middot; Claude on AWS Bedrock &middot; Twilio</p>
-    </div>
-    <div class="platform-panel">
-      <ul class="stats mono">
-        <li><span class="stat-n">16</span><span class="stat-l">tables</span></li>
-        <li><span class="stat-n">46</span><span class="stat-l">RLS policies</span></li>
-        <li><span class="stat-n">21</span><span class="stat-l">screens</span></li>
-        <li><span class="stat-n">3</span><span class="stat-l">countries</span></li>
-        <li><span class="stat-n">6</span><span class="stat-l">retail chains</span></li>
-      </ul>
-      <div class="chain mono" role="img" aria-label="Data model chain: brand, then retailer, then store, then machine, then ticket">
-        <span class="chain-node">brand</span>
-        <span class="chain-arrow" aria-hidden="true">&darr;</span>
-        <span class="chain-node">retailer</span>
-        <span class="chain-arrow" aria-hidden="true">&darr;</span>
-        <span class="chain-node">store</span>
-        <span class="chain-arrow" aria-hidden="true">&darr;</span>
-        <span class="chain-node">machine</span>
-        <span class="chain-arrow" aria-hidden="true">&darr;</span>
-        <span class="chain-node accent">ticket</span>
+  <!-- Develop 01 -->
+  <article class="case reveal" id="safesize">
+    <header class="spec">
+      <div class="spec-row">
+        <span class="mono spec-no">Develop 01</span>
+        <h3 class="spec-title">SafeSize Triage</h3>
       </div>
-      <p class="mono chain-note">Two fault paths, machine telemetry and human report, converge on one ticket. Stores never see tiers, countries, or the supply chain behind their fix.</p>
+      <dl class="spec-meta mono">
+        <div><dt>Project</dt><dd>SafeSize &times; The General Store</dd></div>
+        <div><dt>Role</dt><dd>Discovery &middot; Data model &middot; UX &middot; Security</dd></div>
+      </dl>
+    </header>
+    <div class="case-body">
+      <div class="case-text">
+        <p>SafeSize 3D foot scanners sit on shop floors across Asia-Pacific. When one breaks, the fix used to start with a phone call. SafeSize Triage replaces that: machines report their own faults, store staff report through an AI chatbot, and every fault becomes a ticket routed to the right support tier across three countries.</p>
+        <p>Scoped and designed end to end, from discovery and data model to ticket lifecycle and 21 prototype screens, with a deployed Postgres schema where row-level security, not application code, decides who sees what. Every region choice keeps the data in Australia.</p>
+        <p class="mono case-tags">Next.js &middot; Supabase Postgres &middot; Claude on AWS Bedrock &middot; Twilio</p>
+        <p class="mono repo-note">Private client repository</p>
+      </div>
+      <div class="platform-panel">
+        <ul class="stats mono">
+          <li><span class="stat-n">16</span><span class="stat-l">tables</span></li>
+          <li><span class="stat-n">46</span><span class="stat-l">RLS policies</span></li>
+          <li><span class="stat-n">21</span><span class="stat-l">screens</span></li>
+          <li><span class="stat-n">3</span><span class="stat-l">countries</span></li>
+          <li><span class="stat-n">6</span><span class="stat-l">retail chains</span></li>
+        </ul>
+        <div class="chain mono" role="img" aria-label="Data model chain: brand, then retailer, then store, then machine, then ticket">
+          <span class="chain-node">brand</span>
+          <span class="chain-arrow" aria-hidden="true">&darr;</span>
+          <span class="chain-node">retailer</span>
+          <span class="chain-arrow" aria-hidden="true">&darr;</span>
+          <span class="chain-node">store</span>
+          <span class="chain-arrow" aria-hidden="true">&darr;</span>
+          <span class="chain-node">machine</span>
+          <span class="chain-arrow" aria-hidden="true">&darr;</span>
+          <span class="chain-node accent">ticket</span>
+        </div>
+        <p class="mono chain-note">Two fault paths, machine telemetry and human report, converge on one ticket. Stores never see tiers, countries, or the supply chain behind their fix.</p>
+      </div>
+    </div>
+  </article>
+
+  <!-- Develop 02 -->
+  <article class="case reveal" id="courtiq">
+    <header class="spec">
+      <div class="spec-row">
+        <span class="mono spec-no">Develop 02</span>
+        <h3 class="spec-title">CourtIQ</h3>
+      </div>
+      <dl class="spec-meta mono">
+        <div><dt>Context</dt><dd>UTS Tech Fest 2026 AI Showcase</dd></div>
+        <div><dt>Role</dt><dd>Court vision mapping, in a team of three</dd></div>
+      </dl>
+    </header>
+    <div class="case-body">
+      <div class="case-text">
+        <p>Basketball footage in, a top-down court out. CourtIQ detects players, tracks shots, and projects every player onto a 2D court plan, frame by frame. Built with two others and presented at the UTS Tech Fest 2026 AI Showcase.</p>
+        <p>I owned court vision mapping. I fine-tuned a YOLO26n-pose network on AWS SageMaker to find 33 court keypoints in every frame across an 851-image dataset, reaching 0.994 keypoint mAP50 and 0.853 mAP50-95. A per-frame homography turns those keypoints into the projection that the rest of the pipeline plots on.</p>
+        <p class="decision"><span class="mono decision-tag">Decision</span> We treated the court as a pose problem rather than a segmentation one. Keypoints hand you a homography directly, so the projection survives camera pans and partial occlusion instead of collapsing whenever a player stands on a line.</p>
+        <p class="mono case-tags">Python &middot; YOLO26n-pose &middot; OpenCV &middot; AWS SageMaker &middot; Next.js</p>
+        <a class="live-link mono" href="https://github.com/ZyadKamalHamed/Project-45-Basketball-2D-Mapping" rel="noopener">View repository &nearr;</a>
+      </div>
+      <div class="case-media">
+        <ul class="stats mono compact">
+          <li><span class="stat-n">33</span><span class="stat-l">keypoints</span></li>
+          <li><span class="stat-n">851</span><span class="stat-l">images</span></li>
+          <li><span class="stat-n">.994</span><span class="stat-l">mAP50</span></li>
+          <li><span class="stat-n">.853</span><span class="stat-l">mAP50-95</span></li>
+        </ul>
+        <figure class="frame">
+          <figcaption class="mono dim">Court keypoints detected on a broadcast frame</figcaption>
+          <button class="zoom" data-full="img/courtiq-keypoints.jpg" aria-label="View court keypoint detection full size">
+            <img src="img/courtiq-keypoints.jpg" width="950" height="543" alt="Basketball broadcast frame with red court keypoints detected along the lines and the mapped court region shaded green" loading="lazy">
+          </button>
+        </figure>
+        <figure class="frame">
+          <figcaption class="mono dim">The same play projected to a 2D court</figcaption>
+          <button class="zoom" data-full="img/courtiq-court.jpg" aria-label="View top-down court projection full size">
+            <img src="img/courtiq-court.jpg" width="950" height="536" alt="Top-down basketball court diagram with a player movement track drawn in green and red" loading="lazy">
+          </button>
+        </figure>
+      </div>
+    </div>
+  </article>
+
+  <!-- Develop 03 -->
+  <article class="case reveal dark-case" id="jarvis">
+    <header class="spec">
+      <div class="spec-row">
+        <span class="mono spec-no">Develop 03</span>
+        <h3 class="spec-title">JARVIS</h3>
+      </div>
+      <dl class="spec-meta mono">
+        <div><dt>Project</dt><dd>Personal AI operating system</dd></div>
+        <div><dt>Role</dt><dd>Everything</dd></div>
+      </dl>
+    </header>
+    <div class="case-body">
+      <div class="case-text">
+        <p>A personal AI operating system that runs as one zero-dependency Node process over a folder of JSON, with a browser as the only client. Scheduled agents write the morning briefing, plan the day, and file the tasks. The dashboard renders that state and reads it back.</p>
+        <p>It rewrites itself nightly, one small change at a time, and every change is gated on its own test run before it is kept.</p>
+        <p class="decision"><span class="mono decision-tag">Decision</span> Stealth mode strips personal data server-side, before the response is serialised, rather than hiding it with CSS on the client. Anything the browser never receives cannot leak off a shared screen.</p>
+        <p class="mono case-tags">Node &middot; JSON store &middot; Web Speech &middot; Tailscale</p>
+        <p class="mono repo-note">Private repository, walkthrough on request</p>
+        <ul class="feature-list mono">
+          <li>Zero-dependency Node process</li>
+          <li>Scheduled briefing and planning agents</li>
+          <li>Server-side stealth mode</li>
+          <li>Nightly self-evolution, gated on tests</li>
+          <li>Spaced-repetition study coach</li>
+          <li>Voice output across three engines</li>
+        </ul>
+      </div>
+      <div class="case-media hud-stack">
+        <figure class="frame dark-frame">
+          <figcaption class="mono dim">Boot sequence</figcaption>
+          <button class="zoom" data-full="img/jarvis-boot.jpg" aria-label="View JARVIS boot screen full size">
+            <img src="img/jarvis-boot.jpg" width="2000" height="1250" alt="JARVIS boot screen: glowing cyan arc reactor ring, wordmark, and INITIALISE button on black" loading="lazy">
+          </button>
+        </figure>
+        <figure class="frame dark-frame">
+          <figcaption class="mono dim">Live HUD &middot; demo data</figcaption>
+          <button class="zoom" data-full="img/jarvis-hud.jpg" aria-label="View JARVIS dashboard full size">
+            <img src="img/jarvis-hud.jpg" width="2000" height="1250" alt="JARVIS dashboard: priority feed, day-cycle ring, comms and system panels, holographic agent deck" loading="lazy">
+          </button>
+        </figure>
+      </div>
+    </div>
+  </article>
+
+  <!-- Develop 04 -->
+  <article class="case reveal" id="rag">
+    <header class="spec">
+      <div class="spec-row">
+        <span class="mono spec-no">Develop 04</span>
+        <h3 class="spec-title">UTS FEIT RAG Chatbot</h3>
+      </div>
+      <dl class="spec-meta mono">
+        <div><dt>Context</dt><dd>UTS group project</dd></div>
+        <div><dt>Role</dt><dd>Retrieval pipeline and evaluation</dd></div>
+      </dl>
+    </header>
+    <div class="case-body">
+      <div class="case-text">
+        <p>A retrieval-augmented generation chatbot that answers UTS student questions about enrolment, assessment, key dates, and campus life. It retrieves from indexed UTS policy documents and handbooks, and searches the web when the answer is not already in the corpus.</p>
+        <p>I evaluated it on retrieval accuracy and answer usability against real student scenarios rather than generic benchmarks. A wrong answer about a census date costs a student money, so usability was the metric that mattered.</p>
+        <p class="decision"><span class="mono decision-tag">Decision</span> Search results are filtered to trusted UTS domains before anything is scraped, and the whole stack runs locally through Ollama. The model cannot answer a policy question from a random forum post, and no student query leaves the machine. The cost is a smaller model and slower answers.</p>
+        <p class="mono case-tags">Python &middot; LangChain &middot; Ollama &middot; Chroma &middot; FastAPI &middot; Streamlit</p>
+        <a class="live-link mono" href="https://github.com/ZyadKamalHamed/Group-17-B-AI-LLM-chatbot-for-UTS-FEIT" rel="noopener">View repository &nearr;</a>
+      </div>
+      <div class="platform-panel">
+        <div class="chain mono" role="img" aria-label="Retrieval path: question, then UTS domain filter, then scrape and local documents, then local model, then cited answer">
+          <span class="chain-node">question</span>
+          <span class="chain-arrow" aria-hidden="true">&darr;</span>
+          <span class="chain-node">UTS domain filter</span>
+          <span class="chain-arrow" aria-hidden="true">&darr;</span>
+          <span class="chain-node">scrape + indexed PDFs</span>
+          <span class="chain-arrow" aria-hidden="true">&darr;</span>
+          <span class="chain-node">llama3 8b, local</span>
+          <span class="chain-arrow" aria-hidden="true">&darr;</span>
+          <span class="chain-node accent">answer</span>
+        </div>
+        <p class="mono chain-note">Two retrieval paths, indexed documents and filtered web search, converge on one answer. The model only ever sees text that came from a UTS source.</p>
+      </div>
+    </div>
+  </article>
+
+</section>
+
+<!-- ============ THE HINGE: BY GEORGE ============ -->
+<section class="hinge" id="bygeorge">
+  <article class="case reveal">
+    <header class="spec">
+      <div class="spec-row">
+        <span class="mono spec-no">Develop 05&ensp;/&ensp;Design 01</span>
+        <h3 class="spec-title">By George! Food &amp; Coffee</h3>
+      </div>
+      <dl class="spec-meta mono">
+        <div><dt>Client</dt><dd>By George, Croydon Park</dd></div>
+        <div><dt>Role</dt><dd>Design &middot; Build &middot; Deploy &middot; Maintain</dd></div>
+      </dl>
+    </header>
+    <div class="case-body">
+      <div class="case-text">
+        <p>A neighbourhood food and coffee shop in Croydon Park. I designed it and I built it: one fast page carrying menu, gallery, retail, and delivery in the shop&rsquo;s own hand-drawn voice, kept current through every menu change since.</p>
+        <p>This is where the two halves of this site meet. The brand work and the front-end were the same job, done by the same person.</p>
+        <p class="mono case-tags">HTML &middot; CSS &middot; JS &middot; Vercel</p>
+        <a class="live-link mono" href="https://bygeorgecoffee.com.au/" rel="noopener">Visit live site &nearr;</a>
+      </div>
+      <div class="case-media">
+        <figure class="frame browser">
+          <figcaption class="mono dim">bygeorgecoffee.com.au &middot; live</figcaption>
+          <button class="zoom" data-full="img/bygeorge-hero.jpg" aria-label="View By George site full size">
+            <img src="img/bygeorge-hero.jpg" width="2000" height="1250" alt="By George website: cream page with red hand-lettered logo, nav, and a hand holding an iced coffee" loading="lazy">
+          </button>
+        </figure>
+      </div>
     </div>
   </article>
 </section>
 
-<!-- ============ S.04 AI SOLUTIONS ============ -->
-<section class="service dark-room" id="ai">
-  <header class="spec reveal">
-    <div class="spec-row">
-      <span class="mono spec-no">Service 04</span>
-      <h2 class="spec-title">AI Solutions</h2>
-    </div>
-    <dl class="spec-meta mono">
-      <div><dt>Project</dt><dd>JARVIS</dd></div>
-      <div><dt>Deliverables</dt><dd>Agents &middot; Voice &middot; HUD</dd></div>
-    </dl>
+<!-- ============ DESIGN ============ -->
+<section class="discipline" id="design">
+  <header class="discipline-head reveal">
+    <h2 class="discipline-title">Design</h2>
+    <p class="discipline-lede">Brand-led websites, product design, and campaign systems that hold up at every placement size. By George sits above, in both disciplines.</p>
   </header>
 
-  <article class="case reveal">
-    <div class="case-text">
-      <h3>JARVIS</h3>
-      <p>A personal AI operating system. A scheduled agent writes the morning briefing, plans the day, and files the tasks; the dashboard renders it all as a cinematic HUD with a voice to match. It improves itself nightly, one small verified change at a time, and a stealth mode strips anything personal server-side before a byte leaves the machine.</p>
-      <p>Built deliberately heavy on agents and light on stack: one zero-dependency Node process, a folder of JSON owned by the agents, and a browser.</p>
-      <ul class="feature-list mono">
-        <li>Morning briefing agent</li>
-        <li>Voice in three engines</li>
-        <li>Nightly self-evolution</li>
-        <li>Server-side stealth mode</li>
-        <li>Spaced-repetition study coach</li>
-        <li>Zero-dependency Node</li>
-      </ul>
-    </div>
-    <div class="hud-stack">
-      <figure class="frame dark-frame">
-        <figcaption class="mono dim">1680 &times; 1050 &middot; Boot sequence</figcaption>
-        <button class="zoom" data-full="img/jarvis-boot.jpg" aria-label="View JARVIS boot screen full size">
-          <img src="img/jarvis-boot.jpg" width="2000" height="1250" alt="JARVIS boot screen: glowing cyan arc reactor ring, wordmark, and INITIALISE button on black" loading="lazy">
-        </button>
-      </figure>
-      <figure class="frame dark-frame">
-        <figcaption class="mono dim">Live HUD &middot; demo data</figcaption>
-        <button class="zoom" data-full="img/jarvis-hud.jpg" aria-label="View JARVIS dashboard full size">
-          <img src="img/jarvis-hud.jpg" width="2000" height="1250" alt="JARVIS dashboard: priority feed, day-cycle ring, comms and system panels, holographic agent deck" loading="lazy">
-        </button>
-      </figure>
+  <!-- Design 02 -->
+  <article class="case reveal" id="z1r0">
+    <header class="spec">
+      <div class="spec-row">
+        <span class="mono spec-no">Design 02</span>
+        <h3 class="spec-title">Z1R0</h3>
+      </div>
+      <dl class="spec-meta mono">
+        <div><dt>Client</dt><dd>Z1R0, 3D-printed footwear</dd></div>
+        <div><dt>Role</dt><dd>Art direction &middot; UX &middot; Copy</dd></div>
+      </dl>
+    </header>
+    <div class="case-body full">
+      <div class="case-text">
+        <p>Landing and product pages for Z1R0, a startup 3D-printing custom-fit footwear from a scan of your feet. Dark, editorial layouts designed in Figma around the scan, customise, print story, ready for a motion-heavy build. Scroll inside each page.</p>
+        <p class="mono case-tags">Figma &middot; Art direction &middot; UX copy</p>
+      </div>
+      <div class="scroll-pair">
+        <figure class="frame scrollframe">
+          <figcaption class="mono dim">Homepage</figcaption>
+          <div class="scrollwin" role="region" tabindex="0" aria-label="Z1R0 homepage design, scrollable">
+            <img src="img/z1r0-home.jpg" width="1400" height="7549" alt="Z1R0 homepage design: black editorial page with red 3D-printed sneaker hero" loading="lazy">
+          </div>
+        </figure>
+        <figure class="frame scrollframe">
+          <figcaption class="mono dim">Product page</figcaption>
+          <div class="scrollwin" role="region" tabindex="0" aria-label="Z1R0 product page design, scrollable">
+            <img src="img/z1r0-product.jpg" width="1904" height="2600" alt="Z1R0 product page design: The Arjé sneaker in coral with product cards" loading="lazy">
+          </div>
+        </figure>
+      </div>
     </div>
   </article>
+
+  <!-- Design 03 -->
+  <article class="case reveal" id="freedom">
+    <header class="spec">
+      <div class="spec-row">
+        <span class="mono spec-no">Design 03</span>
+        <h3 class="spec-title">Freedom</h3>
+      </div>
+      <dl class="spec-meta mono">
+        <div><dt>Campaign</dt><dd>Absolutely Everything</dd></div>
+        <div><dt>Deliverables</dt><dd>OOH &middot; Social &middot; Film &middot; In-situ</dd></div>
+      </dl>
+    </header>
+    <div class="case-body full">
+      <div class="case-text">
+        <p>A full campaign asset system for Freedom&rsquo;s Absolutely Everything sale. One master layout rolls out across out-of-home, social, film end-frames, and product price tiles: more than forty artworks, each one press-ready at its placement size.</p>
+      </div>
+      <figure class="art hero-art">
+        <figcaption class="mono dim">In situ &middot; rail digital billboard</figcaption>
+        <button class="zoom" data-full="img/comp-train.jpg" aria-label="View escalator billboard artwork full size">
+          <img src="img/comp-train.jpg" width="1600" height="900" alt="Freedom campaign billboard above station escalators: red panel with tan leather sofa" loading="lazy">
+        </button>
+      </figure>
+      <div class="art-strip three">
+        <figure class="art">
+          <figcaption class="mono dim">In situ &middot; centre digital panel</figcaption>
+          <button class="zoom" data-full="img/comp-shopper.jpg" aria-label="View shopping centre panel artwork full size">
+            <img src="img/comp-shopper.jpg" width="1600" height="900" alt="Freedom campaign on a shopping centre digital panel with passing shoppers" loading="lazy">
+          </button>
+        </figure>
+        <figure class="art">
+          <figcaption class="mono dim">Out-of-home</figcaption>
+          <button class="zoom" data-full="img/ooh-portrait-pp.jpg" aria-label="View portrait OOH artwork full size">
+            <img src="img/ooh-portrait-pp.jpg" width="788" height="1400" alt="Portrait artwork: 30% off Zara leather sofa, save $1,200" loading="lazy">
+          </button>
+        </figure>
+        <figure class="art">
+          <figcaption class="mono dim">Social</figcaption>
+          <button class="zoom" data-full="img/social-square.jpg" aria-label="View square social artwork full size">
+            <img src="img/social-square.jpg" width="1080" height="1080" alt="Square social artwork: red border, leather sofa, 20-60% off everything" loading="lazy">
+          </button>
+        </figure>
+      </div>
+    </div>
+  </article>
+
+  <!-- Design 04 -->
+  <article class="case reveal" id="indro">
+    <header class="spec">
+      <div class="spec-row">
+        <span class="mono spec-no">Design 04</span>
+        <h3 class="spec-title">OMA Indro</h3>
+      </div>
+      <dl class="spec-meta mono">
+        <div><dt>Campaign</dt><dd>Find Me At INDRO!</dd></div>
+        <div><dt>Deliverables</dt><dd>Templated rollout &middot; Re-crop pass</dd></div>
+      </dl>
+    </header>
+    <div class="case-body full">
+      <div class="case-text">
+        <p>A templated rollout for Indooroopilly&rsquo;s grocery campaign. Hero image, headline, and brand marks flow from one master into thirty-plus placements, from a small web tile to a full-screen digital panel. This round included a repair pass: eleven wide formats re-cropped in the source file so the photography frames the model correctly at every ratio.</p>
+      </div>
+      <div class="art-strip four">
+        <figure class="art">
+          <button class="zoom" data-full="img/story-1080x1920.jpg" aria-label="View story format artwork">
+            <img src="img/story-1080x1920.jpg" width="788" height="1400" alt="Indro campaign story format: model in blue gown in front of grocery shelves" loading="lazy">
+          </button>
+        </figure>
+        <figure class="art">
+          <button class="zoom" data-full="img/square-1080.jpg" aria-label="View square format artwork">
+            <img src="img/square-1080.jpg" width="1080" height="1080" alt="Indro campaign square format" loading="lazy">
+          </button>
+        </figure>
+        <figure class="art">
+          <button class="zoom" data-full="img/grocer28-1920x1080.jpg" aria-label="View wide screen format artwork">
+            <img src="img/grocer28-1920x1080.jpg" width="1600" height="900" alt="Indro campaign wide screen format" loading="lazy">
+          </button>
+        </figure>
+        <figure class="art">
+          <figcaption class="mono dim">Re-cropped</figcaption>
+          <button class="zoom" data-full="img/wide-1156x288.jpg" aria-label="View wide banner artwork">
+            <img src="img/wide-1156x288.jpg" width="1156" height="288" alt="Indro campaign wide banner, re-cropped to frame the model" loading="lazy">
+          </button>
+        </figure>
+      </div>
+    </div>
+  </article>
+
 </section>
 
 </main>
 
 <!-- ============ CONTACT ============ -->
 <footer class="contact" id="contact">
-  <p class="mono contact-overline">S.05 &middot; Your project</p>
+  <p class="mono contact-overline">Contact</p>
   <p class="contact-title">Let&rsquo;s build.</p>
+  <p class="contact-line">Open to graduate software and machine learning roles from December 2026, and to freelance design and front-end work now.</p>
   <div class="contact-actions">
     <a class="btn" href="mailto:zyad2408@live.com.au">zyad2408@live.com.au</a>
     <a class="btn ghost" href="https://github.com/ZyadKamalHamed" rel="noopener">GitHub</a>
