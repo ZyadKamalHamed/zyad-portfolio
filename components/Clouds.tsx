@@ -1,9 +1,9 @@
 const clouds = [
-  { top: "8%", w: 460, dur: 110, delay: -30, op: 0.85 },
-  { top: "22%", w: 300, dur: 150, delay: -95, op: 0.6 },
-  { top: "46%", w: 560, dur: 170, delay: -60, op: 0.75 },
-  { top: "66%", w: 340, dur: 125, delay: -15, op: 0.65 },
-  { top: "80%", w: 240, dur: 95, delay: -70, op: 0.5 },
+  { top: "8%", w: 460, dur: 48, delay: -30, op: 0.85 },
+  { top: "22%", w: 300, dur: 70, delay: -95, op: 0.6 },
+  { top: "46%", w: 560, dur: 80, delay: -60, op: 0.75 },
+  { top: "66%", w: 340, dur: 58, delay: -15, op: 0.65 },
+  { top: "80%", w: 240, dur: 42, delay: -70, op: 0.5 },
 ];
 
 /** Soft clouds drifting left to right on a slow loop, over the sky photo. */

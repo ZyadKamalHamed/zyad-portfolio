@@ -22,13 +22,6 @@ export const services = [
   },
 ];
 
-export const steps = [
-  ["01", "Discovery", "A short call and a written brief. What you sell, who buys it, what has to be true for this to be worth doing."],
-  ["02", "Design", "Wireframes, then a full Figma design and system. You see and approve every screen before a line of code is written."],
-  ["03", "Build", "AI-assisted development from the approved design. A staging link within days, iterated with you until it is right."],
-  ["04", "Launch and automate", "Deployed on your domain, handed over with docs. Then the systems that keep it running without you."],
-];
-
 export type CaseMedia =
   | { kind: "image"; src: string; alt: string }
   | { kind: "video"; src: string; poster: string; alt: string }
@@ -94,8 +87,7 @@ export const caseStudies: CaseStudy[] = [
       { value: "21", label: "screens" },
       { value: "3", label: "countries" },
     ],
-    // Drop screenshots of the triage system into public/case/safesize/ and list them here.
-    media: { kind: "stack", images: [], alt: "SafeSize Triage screens" },
+    media: { kind: "video", src: "/case/safesize.mp4", poster: "/case/safesize.jpg", alt: "SafeSize Triage customer demo" },
     link: { href: "/#contact", label: "Private client repository, walkthrough on request" },
   },
   {
