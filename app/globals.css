@@ -136,5 +136,5 @@ body {
 
 /* Behind the cut-out headshot: the slate gradient from the Figma hero */
 .headshot-ground {
-  background: linear-gradient(180deg, #4b6a8a 0%, #2c3f54 55%, #1c2733 100%);
+  background: linear-gradient(180deg, #46607c 0%, #384d5f 50%, #1b1e24 100%);
 }
