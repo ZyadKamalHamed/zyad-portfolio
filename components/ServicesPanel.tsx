@@ -6,7 +6,7 @@ const ease = [0.22, 1, 0.36, 1] as const;
 
 export default function ServicesPanel() {
   return (
-    <section id="services" className="night scroll-mt-6 rounded-t-[40px] px-5 pb-32 pt-20 shadow-[0_-40px_80px_rgba(0,0,0,0.35)] sm:px-10 sm:pt-28">
+    <section id="services" className="night scroll-mt-6 rounded-t-[40px] px-5 pb-28 pt-14 shadow-[0_-40px_80px_rgba(0,0,0,0.35)] sm:px-10 sm:pt-20">
       <div className="mx-auto grid max-w-[1400px] gap-10 md:grid-cols-3">
         {services.map((s, i) => (
           <motion.div

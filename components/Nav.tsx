@@ -7,7 +7,7 @@ import { motion } from "motion/react";
 const links = [
   { id: "home", href: "/#top", label: "Home" },
   { id: "services", href: "/#services", label: "Services" },
-  { id: "work", href: "/#work", label: "Case Studies" },
+  { id: "work", href: "/#work", label: "Work" },
   { id: "about", href: "/about", label: "About" },
 ];
 const spyIds = ["services", "work", "contact"];
@@ -86,9 +86,9 @@ export default function Nav() {
           href="/#contact"
           aria-label="Contact"
           whileTap={{ scale: 0.94 }}
-          className={`glass pointer-events-auto absolute right-10 top-1/2 hidden h-14 w-14 -translate-y-1/2 place-items-center rounded-full text-white transition-colors md:grid ${contactActive ? "bg-white/25" : "hover:bg-white/15"}`}
+          className={`glass label pointer-events-auto absolute right-10 top-1/2 hidden h-14 -translate-y-1/2 items-center rounded-full px-6 text-white transition-colors md:flex ${contactActive ? "bg-white/25" : "hover:bg-white/15"}`}
         >
-          <MailIcon className="h-5 w-6" />
+          Contact ↗
         </MLink>
       </div>
     </header>

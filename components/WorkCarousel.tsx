@@ -56,6 +56,22 @@ function Media({ media, stats }: { media: CaseMedia; stats?: CaseStudy["stats"] 
   );
 }
 
+function Arrow({ dir, onClick, className = "", style }: { dir: -1 | 1; onClick: () => void; className?: string; style?: React.CSSProperties }) {
+  return (
+    <button
+      onClick={onClick}
+      onPointerDown={(e) => e.stopPropagation()}
+      aria-label={dir < 0 ? "Previous case study" : "Next case study"}
+      style={style}
+      className={`glass-on-night grid h-12 w-12 place-items-center rounded-full hover:bg-white/15 ${className}`}
+    >
+      <svg viewBox="0 0 16 16" width="16" height="16" fill="none" aria-hidden>
+        <path d={dir < 0 ? "M10 2 4 8l6 6" : "m6 2 6 6-6 6"} stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    </button>
+  );
+}
+
 function Slide({ cs, active, onSelect }: { cs: CaseStudy; active: boolean; onSelect: () => void }) {
   const external = cs.link?.href.startsWith("http");
   return (
@@ -76,7 +92,7 @@ function Slide({ cs, active, onSelect }: { cs: CaseStudy; active: boolean; onSel
             : <Link href={cs.link.href} tabIndex={active ? 0 : -1} className="label mt-5 inline-block text-signal hover:text-slate sm:mt-6">{cs.link.label}</Link>
         )}
       </article>
-      <div className="float-late relative aspect-video overflow-hidden rounded-[28px] border border-white/12 bg-white/5 shadow-[0_30px_80px_rgba(0,0,0,0.45)] sm:rounded-[32px] md:aspect-[4/3]">
+      <div className="float-late relative order-first aspect-video overflow-hidden rounded-[28px] md:order-none border border-white/12 bg-white/5 shadow-[0_30px_80px_rgba(0,0,0,0.45)] sm:rounded-[32px] md:aspect-[4/3]">
         <Media media={cs.media} stats={cs.stats} />
       </div>
     </div>
@@ -141,17 +157,15 @@ export default function WorkCarousel() {
         className="mx-auto flex max-w-[1240px] flex-wrap items-end justify-between gap-6"
       >
         <div>
-          <p className="eyebrow text-white/50">Selected work</p>
-          <h2 className="font-display mt-3 text-[40px] font-light">Case studies</h2>
+          <p className="eyebrow text-white/50">Case studies</p>
+          <h2 className="font-display mt-3 text-[40px] font-light">Work</h2>
         </div>
         <div className="flex items-center gap-4">
           <p className="label text-white/60 tabular-nums">{pad(index + 1)} / {pad(n)}</p>
-          <button onClick={() => go(-1)} aria-label="Previous case study" className="glass-on-night grid h-12 w-12 place-items-center rounded-full hover:bg-white/15">
-            <svg viewBox="0 0 16 16" width="16" height="16" fill="none" aria-hidden><path d="M10 2 4 8l6 6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" /></svg>
-          </button>
-          <button onClick={() => go(1)} aria-label="Next case study" className="glass-on-night grid h-12 w-12 place-items-center rounded-full hover:bg-white/15">
-            <svg viewBox="0 0 16 16" width="16" height="16" fill="none" aria-hidden><path d="m6 2 6 6-6 6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" /></svg>
-          </button>
+          <div className="flex gap-3 md:hidden">
+            <Arrow dir={-1} onClick={() => go(-1)} />
+            <Arrow dir={1} onClick={() => go(1)} />
+          </div>
         </div>
       </motion.div>
 
@@ -169,6 +183,12 @@ export default function WorkCarousel() {
         className="relative mx-auto mt-14 h-[640px] max-w-[1240px] cursor-grab touch-pan-y active:cursor-grabbing md:h-[520px]"
         aria-roledescription="carousel"
       >
+        {slideW > 0 && (
+          <>
+            <Arrow dir={-1} onClick={() => go(-1)} className="absolute top-1/2 z-10 hidden -translate-y-1/2 md:grid" style={{ left: (slideW - cardW) / 2 - 72 }} />
+            <Arrow dir={1} onClick={() => go(1)} className="absolute top-1/2 z-10 hidden -translate-y-1/2 md:grid" style={{ left: (slideW + cardW) / 2 + 24 }} />
+          </>
+        )}
         {slideW > 0 && caseStudies.map((cs, i) => {
           let off = (i - index) % n;
           if (off > n / 2) off -= n;

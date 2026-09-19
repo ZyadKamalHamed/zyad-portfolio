@@ -1,12 +1,7 @@
 import Image from "next/image";
+import { aboutBio, timeline } from "@/lib/content";
 
 export const metadata = { title: "About · Zyad Kamal Hamed" };
-
-const marks = [
-  { year: "2026", side: "left" },
-  { year: "2025", side: "right" },
-  { year: "2025", side: "left" },
-];
 
 export default function AboutPage() {
   return (
@@ -17,28 +12,38 @@ export default function AboutPage() {
           <div className="h-[140px] w-[140px] overflow-hidden rounded-full ring-2 ring-white/80">
             <Image src="/img/headshot.jpg" alt="Zyad Kamal Hamed" width={140} height={140} />
           </div>
-          <p className="leading-relaxed text-white/80">
-            I build machine learning systems and design the interfaces around them. Final-year Bachelor of AI at UTS, graduating December 2026, and the sole technical hire at The General Store, a design and advertising agency in Surry Hills, where I run AI implementation, tooling and training across a team of sixty. On the side I design and build websites and automations for small businesses.
-          </p>
+          <p className="leading-relaxed text-white/80">{aboutBio}</p>
         </div>
 
-        <div className="relative mx-auto mt-24 max-w-[1000px]">
-          <div className="absolute left-1/2 top-0 h-full w-px -translate-x-1/2 bg-white/25" aria-hidden />
-          <p className="label glass-on-night relative left-1/2 w-max -translate-x-1/2 rounded-full px-6 py-3 text-white/90">Timeline · coming soon</p>
-          <ol className="mt-16 flex flex-col gap-28">
-            {marks.map((m, i) => (
-              <li key={i} className={`relative flex items-center ${m.side === "left" ? "justify-start" : "justify-end"}`}>
-                <span className="absolute left-1/2 h-4 w-4 -translate-x-1/2 rounded-full border border-white/60 bg-[#0e141b]" aria-hidden>
-                  <span className="absolute inset-[4px] rounded-full bg-white/80" />
-                </span>
-                <div className={`w-[46%] ${m.side === "left" ? "pr-10 text-right" : "pl-10 text-left"}`}>
-                  <p className="eyebrow text-white/60">{m.year}</p>
-                  <div className="mt-3 h-24 rounded-2xl border border-dashed border-white/15" />
+        <ol className="mx-auto mt-20 max-w-[1000px]">
+          {timeline.map((t, i) => {
+            const last = i === timeline.length - 1;
+            return (
+              <li key={`${t.year}-${t.title}`} className="grid grid-cols-[40px_1fr] md:grid-cols-[96px_48px_1fr]">
+                <p className="eyebrow hidden pt-7 text-white/55 md:block">{t.year}</p>
+                <div className="flex flex-col items-center pt-7">
+                  <span className="h-3 w-3 shrink-0 rounded-full border-[1.5px] border-white/60 bg-slate" aria-hidden />
+                  {!last && <span className="mt-2 w-px flex-1 bg-white/12" aria-hidden />}
+                </div>
+                <div className="pb-5">
+                  <article className="flex flex-col gap-5 rounded-[20px] border border-white/12 bg-white/[0.04] p-5 sm:flex-row sm:p-6">
+                    <div className="grid h-24 w-24 shrink-0 place-items-center overflow-hidden rounded-2xl border border-dashed border-white/25 bg-white/[0.06]">
+                      {t.image
+                        ? <Image src={t.image.src} alt={t.image.alt} width={96} height={96} className="h-full w-full object-cover" />
+                        : <span className="eyebrow text-[10px] text-white/50">Add image</span>}
+                    </div>
+                    <div className="min-w-0">
+                      <p className="eyebrow mb-2 text-white/55 md:hidden">{t.year}</p>
+                      <h2 className="text-[20px] font-medium leading-snug">{t.title}</h2>
+                      <p className="eyebrow mt-2 text-white/60">{t.meta}</p>
+                      <p className="mt-3 text-[15px] leading-relaxed text-white/78">{t.body}</p>
+                    </div>
+                  </article>
                 </div>
               </li>
-            ))}
-          </ol>
-        </div>
+            );
+          })}
+        </ol>
       </div>
     </section>
   );
