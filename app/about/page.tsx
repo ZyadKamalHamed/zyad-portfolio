@@ -5,9 +5,9 @@ export const metadata = { title: "About · Zyad Kamal Hamed" };
 
 function Photo({ entry }: { entry: TimelineEntry }) {
   return (
-    <div className="grid aspect-[200/214] w-[160px] shrink-0 place-items-center overflow-hidden border border-white/70 bg-white/[0.06] md:w-[200px]">
+    <div className={`grid aspect-[200/214] w-[160px] shrink-0 place-items-center overflow-hidden border border-white/70 md:w-[200px] ${entry.image?.fit === "contain" ? "bg-white p-6" : "bg-white/[0.06]"}`}>
       {entry.image
-        ? <Image src={entry.image.src} alt={entry.image.alt} width={200} height={214} className="h-full w-full object-cover" />
+        ? <Image src={entry.image.src} alt={entry.image.alt} width={200} height={214} className={`h-full w-full ${entry.image.fit === "contain" ? "object-contain" : "object-cover"}`} />
         : <span className="eyebrow text-[10px] text-white/50">Add image</span>}
     </div>
   );

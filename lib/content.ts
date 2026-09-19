@@ -112,25 +112,28 @@ export const contactIntro =
 export const aboutBio =
   "Hi, I am Zyad. I work full-time as the sole AI specialist at a mid-sized Sydney creative agency, I am in the final year of a Bachelor of AI at UTS, and I freelance as a designer and developer for small businesses that want a proper presence online and systems that run without them. Here is how I got here.";
 
-export type TimelineEntry = { year: string; title: string; meta: string; body: string; image?: { src: string; alt: string } };
+export type TimelineEntry = { year: string; title: string; meta: string; body: string; image?: { src: string; alt: string; fit?: "cover" | "contain" } };
 
 export const timeline: TimelineEntry[] = [
   {
     year: "2026",
     title: "Bachelor of Artificial Intelligence, graduating",
     meta: "UTS · Aug 2024 to Dec 2026",
+    image: { src: "/img/UTS-logo.png", alt: "UTS logo", fit: "contain" },
     body: "Distinction average. Final-year work includes a court keypoint detector at 0.994 mAP50 shown at UTS Tech Fest, and a RAG chatbot built for UTS FEIT students.",
   },
   {
     year: "2025",
     title: "AI Specialist, The General Store",
     meta: "Surry Hills · Sep 2025 to present",
+    image: { src: "/img/G-Icon.jpg", alt: "The General Store icon", fit: "contain" },
     body: "Sole technical hire at a 60-person creative agency. Shipped the staff onboarding platform, wrote automation that removed 39 weeks of manual documentation a year, and trained 50+ people on AI tools.",
   },
   {
     year: "2023",
     title: "Google UX Design Certificate",
     meta: "Coursera · Apr 2023",
+    image: { src: "/img/Google-coursera-certificate.png", alt: "Google UX Design Certificate badge", fit: "contain" },
     body: "User research, journey mapping and stakeholder communication. Where the design half started.",
   },
   {
