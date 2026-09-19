@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Headshot from "@/components/Headshot";
 import { aboutBio, timeline, type TimelineEntry } from "@/lib/content";
 
 export const metadata = { title: "About · Zyad Kamal Hamed" };
@@ -33,9 +34,7 @@ export default function AboutPage() {
       <div className="mx-auto max-w-[1240px]">
         <h1 className="font-display text-center text-[40px] font-light uppercase tracking-wide">About</h1>
         <div className="mx-auto mt-10 flex max-w-[720px] flex-col items-center gap-6 text-center">
-          <div className="h-[140px] w-[140px] overflow-hidden rounded-full ring-2 ring-white/80">
-            <Image src="/img/headshot.jpg" alt="Zyad Kamal Hamed" width={140} height={140} />
-          </div>
+          <Headshot className="h-[160px] w-[160px]" />
           <p className="leading-relaxed text-white/80">{aboutBio}</p>
         </div>
 

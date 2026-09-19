@@ -1,5 +1,5 @@
 "use client";
-import Image from "next/image";
+import Headshot from "./Headshot";
 import { motion, useScroll, useTransform } from "motion/react";
 import Clouds from "./Clouds";
 
@@ -14,11 +14,7 @@ export default function Hero() {
       <Clouds />
       <motion.div style={{ opacity, y, scale }} className="z-10 flex flex-col items-center gap-8">
         <h1 className="font-display text-[clamp(64px,10vw,96px)] font-light leading-none tracking-[-0.02em] text-slate/90">Zyad</h1>
-        <div className="headshot-ring h-[200px] w-[200px] rounded-full p-[3px] sm:h-[240px] sm:w-[240px]">
-          <div className="headshot-ground relative h-full w-full overflow-hidden rounded-full">
-            <Image src="/img/headshot-cutout.png" alt="Zyad Kamal Hamed" width={240} height={240} priority className="h-full w-full object-cover" />
-          </div>
-        </div>
+        <Headshot priority className="h-[200px] w-[200px] sm:h-[240px] sm:w-[240px]" />
         <p className="label text-slate/80">Designer · Developer · AI Engineer</p>
         <p className="max-w-[560px] text-[18px] leading-relaxed text-slate/85 sm:text-[20px]">
           I design and build websites and AI tools for businesses, and work as an AI Specialist at a Sydney creative agency.
