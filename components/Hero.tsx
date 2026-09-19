@@ -15,9 +15,8 @@ export default function Hero() {
       <motion.div style={{ opacity, y, scale }} className="z-10 flex flex-col items-center gap-8">
         <h1 className="font-display text-[clamp(64px,10vw,96px)] font-light leading-none tracking-[-0.02em] text-slate/90">Zyad</h1>
         <div className="headshot-ring h-[200px] w-[200px] rounded-full p-[3px] sm:h-[240px] sm:w-[240px]">
-          <div className="relative h-full w-full overflow-hidden rounded-full">
-            <Image src="/img/headshot.jpg" alt="Zyad Kamal Hamed" width={240} height={240} priority className="h-full w-full object-cover" />
-            <span className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-slate/45" aria-hidden />
+          <div className="headshot-ground relative h-full w-full overflow-hidden rounded-full">
+            <Image src="/img/headshot-cutout.png" alt="Zyad Kamal Hamed" width={240} height={240} priority className="h-full w-full object-cover" />
           </div>
         </div>
         <p className="label text-slate/80">Designer · Developer · AI Engineer</p>

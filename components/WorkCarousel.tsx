@@ -19,7 +19,7 @@ function Media({ media, stats }: { media: CaseMedia; stats?: CaseStudy["stats"] 
         autoPlay muted loop playsInline
         aria-label={media.alt}
         onError={() => setVideoFailed(true)}
-        className="h-full w-full object-cover"
+        className="absolute inset-0 h-full w-full object-cover"
       />
     );
   }
@@ -78,7 +78,7 @@ function Slide({ cs, active, onSelect, innerRef }: { cs: CaseStudy; active: bool
     <div
       ref={innerRef}
       onClick={active ? undefined : onSelect}
-      className={`grid h-full content-start items-center gap-4 md:content-center md:grid-cols-[1fr_1.15fr] md:gap-8 ${active ? "" : "cursor-pointer"}`}
+      className={`grid content-start items-center gap-4 md:h-full md:content-center md:grid-cols-[1fr_1.15fr] md:gap-8 ${active ? "" : "cursor-pointer"}`}
       aria-hidden={!active}
     >
       <article className="float rounded-[28px] bg-white p-6 text-slate shadow-[0_30px_80px_rgba(0,0,0,0.45)] sm:rounded-[32px] sm:p-10">
@@ -93,7 +93,7 @@ function Slide({ cs, active, onSelect, innerRef }: { cs: CaseStudy; active: bool
             : <Link href={cs.link.href} tabIndex={active ? 0 : -1} className="label mt-5 inline-block text-signal hover:text-slate sm:mt-6">{cs.link.label}</Link>
         )}
       </article>
-      <div className="float-late relative order-first aspect-video overflow-hidden rounded-[28px] md:order-none border border-white/12 bg-white/5 shadow-[0_30px_80px_rgba(0,0,0,0.45)] sm:rounded-[32px] md:aspect-[4/3]">
+      <div className="float-late relative order-first h-[210px] w-full overflow-hidden rounded-[28px] border border-white/12 bg-white/5 shadow-[0_30px_80px_rgba(0,0,0,0.45)] sm:h-[260px] sm:rounded-[32px] md:order-none md:aspect-[4/3] md:h-auto">
         <Media media={cs.media} stats={cs.stats} />
       </div>
     </div>
@@ -125,14 +125,14 @@ export default function WorkCarousel() {
     const el = activeRef.current;
     if (!el) return;
     const measure = () => {
-      const kids = Array.from(el.children) as HTMLElement[];
-      const hs = kids.map((k) => k.getBoundingClientRect().height);
       const stacked = window.innerWidth < 768;
-      const gap = stacked ? 16 : 0;
-      setTrackH(Math.ceil(stacked ? hs.reduce((a, b) => a + b, 0) + gap * (hs.length - 1) : Math.max(...hs)));
+      if (stacked) { setTrackH(el.offsetHeight); return; }
+      const kids = Array.from(el.children) as HTMLElement[];
+      setTrackH(Math.max(...kids.map((k) => k.offsetHeight)));
     };
     measure();
     const ro = new ResizeObserver(measure);
+    ro.observe(el);
     Array.from(el.children).forEach((k) => ro.observe(k));
     return () => ro.disconnect();
   }, [index, slideW]);
