@@ -128,18 +128,6 @@ export const timeline: TimelineEntry[] = [
     body: "Sole technical hire at a 60-person creative agency. Shipped the staff onboarding platform, wrote automation that removed 39 weeks of manual documentation a year, and trained 50+ people on AI tools.",
   },
   {
-    year: "2024",
-    title: "Freelance designer and developer",
-    meta: "Self-employed · Sep 2024 to present",
-    body: "Pitched and won By George's first website, then came back in 2026 with a rebuild: design, build, Stripe checkout, photography and owner training, from pitch to launch in two weeks.",
-  },
-  {
-    year: "2024",
-    title: "Started the Bachelor of AI at UTS",
-    meta: "Sydney · Aug 2024",
-    body: "Mature-age entry, studying full-time alongside full-time work.",
-  },
-  {
     year: "2023",
     title: "Google UX Design Certificate",
     meta: "Coursera · Apr 2023",
