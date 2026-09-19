@@ -7,3 +7,6 @@ out
 *.tsbuildinfo
 next-env.d.ts
 .playwright-mcp
+
+# raw screen recordings, converted by scripts/convert-video.sh into public/case
+public/video
