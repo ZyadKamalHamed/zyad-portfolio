@@ -116,18 +116,18 @@ export type TimelineEntry = { year: string; title: string; meta: string; body: s
 
 export const timeline: TimelineEntry[] = [
   {
-    year: "2026",
-    title: "Bachelor of Artificial Intelligence, graduating",
-    meta: "UTS · Aug 2024 to Dec 2026",
-    image: { src: "/img/UTS-logo.png", alt: "UTS logo", fit: "contain" },
-    body: "Distinction average. Final-year work includes a court keypoint detector at 0.994 mAP50 shown at UTS Tech Fest, and a RAG chatbot built for UTS FEIT students.",
-  },
-  {
     year: "2025",
     title: "AI Specialist, The General Store",
     meta: "Surry Hills · Sep 2025 to present",
     image: { src: "/img/G-Icon.jpg", alt: "The General Store icon", fit: "contain" },
     body: "Sole technical hire at a 60-person creative agency. Shipped the staff onboarding platform, wrote automation that removed 39 weeks of manual documentation a year, and trained 50+ people on AI tools.",
+  },
+  {
+    year: "2026",
+    title: "Bachelor of Artificial Intelligence, graduating",
+    meta: "UTS · Aug 2024 to Dec 2026",
+    image: { src: "/img/UTS-logo.png", alt: "UTS logo", fit: "contain" },
+    body: "Distinction average. Final-year work includes a court keypoint detector at 0.994 mAP50 shown at UTS Tech Fest, and a RAG chatbot built for UTS FEIT students.",
   },
   {
     year: "2023",
@@ -140,6 +140,7 @@ export const timeline: TimelineEntry[] = [
     year: "2018",
     title: "Retail and customer service, Platypus Shoes",
     meta: "Sydney CBD · Nov 2018 to Oct 2021",
+    image: { src: "/img/platypus-shoes-accent-group.png", alt: "Platypus Shoes logo", fit: "contain" },
     body: "Beat individual KPIs by 20% or more, trained new staff on POS and sales, and learned how people actually shop.",
   },
 ];
