@@ -1,32 +1,27 @@
-import Link from "next/link";
 import Hero from "@/components/Hero";
 import ServicesPanel from "@/components/ServicesPanel";
-import CaseStudyCard from "@/components/CaseStudyCard";
-import { caseStudies } from "@/lib/content";
+import WorkCarousel from "@/components/WorkCarousel";
+import ContactForm from "@/components/ContactForm";
 
 export default function Home() {
   return (
     <>
       <Hero />
-      <ServicesPanel />
-      <section className="night-sky px-5 py-24 sm:px-10">
-        <div className="mx-auto max-w-[1240px]">
-          <p className="eyebrow text-white/50">Selected work</p>
-          <h2 className="font-display mt-3 text-[40px] font-light">Case studies</h2>
-          <div className="mt-16 flex flex-col gap-24">
-            {caseStudies.slice(0, 2).map((cs, i) => <CaseStudyCard key={cs.slug} cs={cs} index={i} compact />)}
+      <div className="relative z-10">
+        <ServicesPanel />
+        <WorkCarousel />
+        <section id="contact" className="night scroll-mt-6 px-5 py-24 sm:px-10">
+          <div className="mx-auto grid max-w-[1100px] gap-16 md:grid-cols-[1fr_1.2fr]">
+            <div>
+              <p className="eyebrow text-white/50">Contact</p>
+              <h2 className="font-display mt-3 text-[clamp(40px,6vw,64px)] font-light leading-none">Let&apos;s build.</h2>
+              <p className="mt-6 max-w-[420px] leading-relaxed text-white/75">Tell me what you are trying to do. I reply within a day, usually with a couple of questions and a rough plan.</p>
+              <p className="mt-8 text-sm text-white/50">Prefer email? <a href="mailto:zyad2408@live.com.au" className="text-white/80 underline-offset-4 hover:underline">zyad2408@live.com.au</a></p>
+            </div>
+            <ContactForm />
           </div>
-          <div className="mt-16">
-            <Link href="/case-studies" className="label glass-on-night inline-block rounded-full px-7 py-4 hover:bg-white/15">All case studies →</Link>
-          </div>
-        </div>
-      </section>
-      <section className="sky px-5 py-24 text-center sm:px-10">
-        <p className="eyebrow text-slate/70">Let&apos;s build</p>
-        <h2 className="font-display mt-3 text-[40px] font-light text-slate/90 sm:text-[56px]">Have a project in mind?</h2>
-        <p className="mx-auto mt-4 max-w-[520px] text-slate/80">Design, development or automation. Tell me what you are trying to do and I will come back with a plan and a price.</p>
-        <Link href="/contact" className="label mt-8 inline-block rounded-full bg-slate px-8 py-4 text-white hover:bg-slate/90">Get in touch →</Link>
-      </section>
+        </section>
+      </div>
     </>
   );
 }

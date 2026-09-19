@@ -22,17 +22,29 @@ export const services = [
   },
 ];
 
+export const steps = [
+  ["01", "Discovery", "A short call and a written brief. What you sell, who buys it, what has to be true for this to be worth doing."],
+  ["02", "Design", "Wireframes, then a full Figma design and system. You see and approve every screen before a line of code is written."],
+  ["03", "Build", "AI-assisted development from the approved design. A staging link within days, iterated with you until it is right."],
+  ["04", "Launch and automate", "Deployed on your domain, handed over with docs. Then the systems that keep it running without you."],
+];
+
+export type CaseMedia =
+  | { kind: "image"; src: string; alt: string }
+  | { kind: "video"; src: string; poster: string; alt: string }
+  | { kind: "stack"; images: { src: string; alt: string }[]; alt: string };
+
 export type CaseStudy = {
   slug: string;
   title: string;
+  category: string;
   client: string;
   role: string;
   summary: string;
   decision: string;
   stack: string[];
   stats?: { value: string; label: string }[];
-  image?: string;
-  imageAlt?: string;
+  media: CaseMedia;
   link?: { href: string; label: string };
 };
 
@@ -40,6 +52,7 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "solemate",
     title: "Solemate",
+    category: "Landing pages",
     client: "Solemate, custom footwear",
     role: "Design translation · Front-end · Motion",
     summary:
@@ -47,13 +60,13 @@ export const caseStudies: CaseStudy[] = [
     decision:
       "Scroll progress, not time, drives the motion. The page never plays at the visitor, it responds to them, and the same timeline holds at every window size because every beat is defined as a fraction of the track rather than in pixels.",
     stack: ["Next.js", "React", "Motion", "Figma"],
-    image: "/case/solemate.webp",
-    imageAlt: "Solemate runners",
+    media: { kind: "video", src: "/case/solemate.mp4", poster: "/case/solemate.jpg", alt: "Solemate landing page" },
     link: { href: "https://github.com/ZyadKamalHamed/solemate", label: "View repository ↗" },
   },
   {
     slug: "by-george",
     title: "By George! Food & Coffee",
+    category: "E-commerce",
     client: "By George, Croydon Park",
     role: "Design · Build · Shop · Maintain",
     summary:
@@ -61,13 +74,13 @@ export const caseStudies: CaseStudy[] = [
     decision:
       "The owner edits products, prices and stock from a small admin console, and checkout only ever trusts the server-side catalog. A hidden product cannot be listed, linked to or bought, but it stays editable, so going offline is a toggle rather than a deletion.",
     stack: ["HTML/CSS/JS", "Stripe Checkout", "Redis", "Resend", "Vercel"],
-    image: "/case/bygeorge.jpg",
-    imageAlt: "By George website",
+    media: { kind: "video", src: "/case/bygeorge.mp4", poster: "/case/bygeorge.jpg", alt: "By George website" },
     link: { href: "https://bygeorgecoffee.com.au", label: "Visit live site ↗" },
   },
   {
     slug: "safesize-triage",
     title: "SafeSize Triage",
+    category: "Triage platforms",
     client: "SafeSize × The General Store",
     role: "Discovery · Data model · UX · Security",
     summary:
@@ -81,11 +94,14 @@ export const caseStudies: CaseStudy[] = [
       { value: "21", label: "screens" },
       { value: "3", label: "countries" },
     ],
-    link: { href: "/contact", label: "Private client repository, walkthrough on request" },
+    // Drop screenshots of the triage system into public/case/safesize/ and list them here.
+    media: { kind: "stack", images: [], alt: "SafeSize Triage screens" },
+    link: { href: "/#contact", label: "Private client repository, walkthrough on request" },
   },
   {
     slug: "jarvis",
     title: "JARVIS",
+    category: "AI systems",
     client: "Personal AI operating system",
     role: "Everything",
     summary:
@@ -93,8 +109,7 @@ export const caseStudies: CaseStudy[] = [
     decision:
       "Stealth mode strips personal data server-side, before the response is serialised, rather than hiding it with CSS on the client. Anything the browser never receives cannot leak off a shared screen.",
     stack: ["Node", "JSON store", "Web Speech", "Tailscale"],
-    image: "/case/jarvis.jpg",
-    imageAlt: "JARVIS HUD",
-    link: { href: "/contact", label: "Private repository, walkthrough on request" },
+    media: { kind: "video", src: "/case/jarvis.mp4", poster: "/case/jarvis.jpg", alt: "JARVIS HUD" },
+    link: { href: "/#contact", label: "Private repository, walkthrough on request" },
   },
 ];

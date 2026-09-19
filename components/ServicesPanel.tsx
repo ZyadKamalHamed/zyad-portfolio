@@ -1,12 +1,22 @@
-import Link from "next/link";
-import { services } from "@/lib/content";
+"use client";
+import { motion } from "motion/react";
+import { services, steps } from "@/lib/content";
 
-export default function ServicesPanel({ full = false }: { full?: boolean }) {
+const ease = [0.22, 1, 0.36, 1] as const;
+
+export default function ServicesPanel() {
   return (
-    <section id="services" className="night px-5 py-24 sm:px-10">
+    <section id="services" className="night scroll-mt-6 rounded-t-[40px] px-5 pb-24 pt-20 shadow-[0_-40px_80px_rgba(0,0,0,0.35)] sm:px-10 sm:pt-28">
       <div className="mx-auto grid max-w-[1400px] gap-16 md:grid-cols-3 md:gap-10">
         {services.map((s, i) => (
-          <div key={s.key} className={`flex flex-col ${i === 1 ? "md:rounded-3xl md:bg-white/[0.03] md:px-8 md:py-6 md:-my-6" : ""}`}>
+          <motion.div
+            key={s.key}
+            initial={{ opacity: 0, y: 48 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "0px 0px -15% 0px" }}
+            transition={{ duration: 0.7, delay: i * 0.14, ease }}
+            className={`flex flex-col ${i === 1 ? "md:-my-6 md:rounded-3xl md:bg-white/[0.03] md:px-8 md:py-6" : ""}`}
+          >
             <p className="eyebrow text-white/50">0{i + 1}</p>
             <h2 className="font-display mt-3 text-[40px] font-light uppercase tracking-wide">{s.title}</h2>
             <p className="mt-3 text-lg text-white/90">{s.tagline}</p>
@@ -17,14 +27,28 @@ export default function ServicesPanel({ full = false }: { full?: boolean }) {
               ))}
               <li className="rule" />
             </ul>
-          </div>
+          </motion.div>
         ))}
       </div>
-      {!full && (
-        <div className="mx-auto mt-16 flex max-w-[1400px] justify-center">
-          <Link href="/services" className="label rounded-full glass-on-night px-7 py-4 text-white hover:bg-white/15">How it works →</Link>
-        </div>
-      )}
+
+      <motion.div
+        initial={{ opacity: 0, y: 32 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "0px 0px -10% 0px" }}
+        transition={{ duration: 0.7, ease }}
+        className="mx-auto mt-24 max-w-[1400px]"
+      >
+        <p className="eyebrow text-white/50">How it works</p>
+        <ol className="mt-6 grid gap-8 md:grid-cols-4">
+          {steps.map(([n, t, c]) => (
+            <li key={n} className="rule pt-6">
+              <p className="eyebrow text-white/40">{n}</p>
+              <p className="font-display mt-2 text-2xl font-light">{t}</p>
+              <p className="mt-3 text-[15px] leading-relaxed text-white/65">{c}</p>
+            </li>
+          ))}
+        </ol>
+      </motion.div>
     </section>
   );
 }
