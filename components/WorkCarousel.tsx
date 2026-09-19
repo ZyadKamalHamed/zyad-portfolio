@@ -1,5 +1,5 @@
 "use client";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, type PanInfo } from "motion/react";
@@ -72,12 +72,13 @@ function Arrow({ dir, onClick, className = "", style }: { dir: -1 | 1; onClick: 
   );
 }
 
-function Slide({ cs, active, onSelect }: { cs: CaseStudy; active: boolean; onSelect: () => void }) {
+function Slide({ cs, active, onSelect, innerRef }: { cs: CaseStudy; active: boolean; onSelect: () => void; innerRef?: React.Ref<HTMLDivElement> }) {
   const external = cs.link?.href.startsWith("http");
   return (
     <div
+      ref={innerRef}
       onClick={active ? undefined : onSelect}
-      className={`grid h-full content-center items-center gap-4 md:grid-cols-[1fr_1.15fr] md:gap-8 ${active ? "" : "cursor-pointer"}`}
+      className={`grid h-full content-start items-center gap-4 md:content-center md:grid-cols-[1fr_1.15fr] md:gap-8 ${active ? "" : "cursor-pointer"}`}
       aria-hidden={!active}
     >
       <article className="float rounded-[28px] bg-white p-6 text-slate shadow-[0_30px_80px_rgba(0,0,0,0.45)] sm:rounded-[32px] sm:p-10">
@@ -104,7 +105,9 @@ export default function WorkCarousel() {
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
   const [slideW, setSlideW] = useState(0);
+  const [trackH, setTrackH] = useState<number | null>(null);
   const trackRef = useRef<HTMLDivElement>(null);
+  const activeRef = useRef<HTMLDivElement>(null);
   const wheelLock = useRef(0);
 
   const go = useCallback((d: number) => setIndex((i) => (i + d + n) % n), [n]);
@@ -116,6 +119,23 @@ export default function WorkCarousel() {
     ro.observe(el);
     return () => ro.disconnect();
   }, []);
+
+  // Size the track to the active slide: cards side by side on desktop, stacked on phones.
+  useLayoutEffect(() => {
+    const el = activeRef.current;
+    if (!el) return;
+    const measure = () => {
+      const kids = Array.from(el.children) as HTMLElement[];
+      const hs = kids.map((k) => k.getBoundingClientRect().height);
+      const stacked = window.innerWidth < 768;
+      const gap = stacked ? 16 : 0;
+      setTrackH(Math.ceil(stacked ? hs.reduce((a, b) => a + b, 0) + gap * (hs.length - 1) : Math.max(...hs)));
+    };
+    measure();
+    const ro = new ResizeObserver(measure);
+    Array.from(el.children).forEach((k) => ro.observe(k));
+    return () => ro.disconnect();
+  }, [index, slideW]);
 
   useEffect(() => {
     if (paused) return;
@@ -180,6 +200,7 @@ export default function WorkCarousel() {
         dragElastic={0.18}
         onDragEnd={onDragEnd}
         onWheel={onWheel}
+        style={{ height: trackH ?? undefined }}
         className="relative mx-auto mt-14 h-[640px] max-w-[1240px] cursor-grab touch-pan-y active:cursor-grabbing md:h-[520px]"
         aria-roledescription="carousel"
       >
@@ -203,7 +224,7 @@ export default function WorkCarousel() {
               style={{ width: cardW, left: (slideW - cardW) / 2, zIndex: active ? 2 : 1 }}
               className="absolute top-0 h-full"
             >
-              <Slide cs={cs} active={active} onSelect={() => setIndex(i)} />
+              <Slide cs={cs} active={active} onSelect={() => setIndex(i)} innerRef={active ? activeRef : undefined} />
             </motion.div>
           );
         })}

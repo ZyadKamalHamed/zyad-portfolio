@@ -44,15 +44,15 @@ export type CaseStudy = {
 export const caseStudies: CaseStudy[] = [
   {
     slug: "solemate",
-    title: "Figma file to scroll-driven product story",
+    title: "Scroll-driven motion for a custom footwear brand",
     category: "Landing pages",
     client: "Solemate · Custom footwear landing page",
     role: "Design translation · Front-end · Motion",
     summary:
-      "A scroll-driven landing page built from the Solemate Figma file. One pinned stage runs the whole story, from a scanned foot contour to a rotating sole and exploded pressure layers, with every element driven by scroll progress.",
+      "A scroll-driven landing page for a custom footwear brand. One pinned stage runs the whole story, from a scanned foot contour to a rotating sole and exploded pressure layers, with every element driven by scroll progress.",
     decision:
       "Scroll progress, not time, drives the motion. The page never plays at the visitor, it responds to them, and the same timeline holds at every window size because every beat is defined as a fraction of the track rather than in pixels.",
-    stack: ["Next.js", "React", "Motion", "Figma"],
+    stack: ["Next.js", "React", "Motion"],
     media: { kind: "video", src: "/case/solemate.mp4", poster: "/case/solemate.jpg", alt: "Solemate landing page" },
     link: { href: "/#contact", label: "Private repository, walkthrough on request" },
   },
@@ -72,7 +72,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "safesize-triage",
-    title: "Faults reported in minutes, not phone calls",
+    title: "A trained chatbot that resolves scanner faults in minutes",
     category: "Triage platforms",
     client: "SafeSize Triage · with The General Store",
     role: "Discovery · Data model · UX · Security",
@@ -92,8 +92,8 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "jarvis",
-    title: "One AI system running a job and a degree",
-    category: "AI systems",
+    title: "Bespoke AI systems to manage a busy life",
+    category: "AI operating systems",
     client: "JARVIS · Personal AI operating system",
     role: "Everything",
     summary:
