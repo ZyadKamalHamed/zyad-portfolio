@@ -81,16 +81,16 @@ function Slide({ cs, active, onSelect, innerRef }: { cs: CaseStudy; active: bool
       className={`grid content-start items-center gap-4 md:h-full md:content-center md:grid-cols-[1fr_1.15fr] md:gap-8 ${active ? "" : "cursor-pointer"}`}
       aria-hidden={!active}
     >
-      <article className="float rounded-[28px] bg-white p-6 text-slate shadow-[0_30px_80px_rgba(0,0,0,0.45)] sm:rounded-[32px] sm:p-10">
-        <h3 className="font-display text-[32px] font-light leading-tight sm:text-[44px]">{cs.category}</h3>
-        <p className="mt-3 text-[18px] font-medium leading-snug text-slate sm:text-[20px]">{cs.title}</p>
-        <p className="mt-2 text-sm text-slate/60">{cs.client}</p>
-        <p className="mt-4 line-clamp-4 text-[15px] leading-relaxed text-slate/80 sm:mt-5 md:line-clamp-none">{cs.summary}</p>
-        <p className="mt-4 text-sm text-slate/50 sm:mt-5">{cs.stack.join(" · ")}</p>
+      <article className="float rounded-[28px] bg-white p-7 text-slate shadow-[0_30px_80px_rgba(0,0,0,0.45)] sm:rounded-[32px] sm:p-10">
+        <p className="inline-block rounded-xl border border-slate/25 px-5 py-3 font-mono text-[18px] uppercase tracking-[0.14em] text-slate/70 sm:px-6 sm:text-[22px]">{cs.category}</p>
+        <h3 className="font-display mt-6 text-[26px] font-light leading-[1.15] tracking-[-0.01em] sm:text-[32px]">{cs.title}</h3>
+        <p className="mt-3 text-sm text-slate/55">{cs.client}</p>
+        <p className="mt-5 line-clamp-5 text-[15px] leading-[1.65] text-slate/80 md:line-clamp-none sm:text-[16px]">{cs.summary}</p>
+        <p className="mt-5 text-[13px] leading-relaxed text-slate/45">{cs.stack.join(" · ")}</p>
         {cs.link && (
           external
-            ? <a href={cs.link.href} target="_blank" rel="noreferrer" tabIndex={active ? 0 : -1} className="label mt-5 inline-block text-signal hover:text-slate sm:mt-6">{cs.link.label}</a>
-            : <Link href={cs.link.href} tabIndex={active ? 0 : -1} className="label mt-5 inline-block text-signal hover:text-slate sm:mt-6">{cs.link.label}</Link>
+            ? <a href={cs.link.href} target="_blank" rel="noreferrer" tabIndex={active ? 0 : -1} className="label mt-6 inline-block text-signal hover:text-slate">{cs.link.label}</a>
+            : <Link href={cs.link.href} tabIndex={active ? 0 : -1} className="label mt-6 inline-block text-signal hover:text-slate">{cs.link.label}</Link>
         )}
       </article>
       <div className="float-late relative order-first h-[210px] w-full overflow-hidden rounded-[28px] border border-white/12 bg-white/5 shadow-[0_30px_80px_rgba(0,0,0,0.45)] sm:h-[260px] sm:rounded-[32px] md:order-none md:aspect-[4/3] md:h-auto">

@@ -63,10 +63,10 @@ export const caseStudies: CaseStudy[] = [
     client: "By George! Food & Coffee · Croydon Park",
     role: "Design · Build · Shop · Maintain",
     summary:
-      "A neighbourhood cafe's website and online shop. I designed it and built it: one fast page carrying menu, gallery and retail in the shop's own hand-drawn voice, with Stripe Checkout, live stock and order emails behind it, kept current through every menu change since.",
+      "A local cafe's website and online shop, designed and built end to end. Behind it sits a password-protected dashboard where the owner manages orders and stock, Stripe Checkout for payments, and automated email and SMS that keep customers updated on their orders. Kept current through every menu change since launch.",
     decision:
       "The owner edits products, prices and stock from a small admin console, and checkout only ever trusts the server-side catalog. A hidden product cannot be listed, linked to or bought, but it stays editable, so going offline is a toggle rather than a deletion.",
-    stack: ["HTML/CSS/JS", "Stripe Checkout", "Redis", "Resend", "Vercel"],
+    stack: ["Figma", "HTML/CSS/JS", "Stripe Checkout", "Redis", "Resend", "Vercel"],
     media: { kind: "video", src: "/case/bygeorge.mp4", poster: "/case/bygeorge.jpg", alt: "By George website" },
     link: { href: "https://bygeorgecoffee.com.au", label: "Visit live site ↗" },
   },
