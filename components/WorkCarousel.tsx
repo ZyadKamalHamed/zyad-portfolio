@@ -78,22 +78,22 @@ function Slide({ cs, active, onSelect, innerRef }: { cs: CaseStudy; active: bool
     <div
       ref={innerRef}
       onClick={active ? undefined : onSelect}
-      className={`grid content-start items-center gap-4 md:h-full md:content-center md:grid-cols-[1fr_1.15fr] md:gap-8 ${active ? "" : "cursor-pointer"}`}
+      className={`grid content-start items-center gap-4 lg:h-full lg:content-center lg:grid-cols-[1fr_1.15fr] lg:gap-8 ${active ? "" : "cursor-pointer"}`}
       aria-hidden={!active}
     >
       <article className="float rounded-[28px] bg-white p-7 text-slate shadow-[0_30px_80px_rgba(0,0,0,0.45)] sm:rounded-[32px] sm:p-10">
         <p className="rounded-xl border border-slate/25 px-5 py-3 text-center font-mono text-[18px] uppercase tracking-[0.14em] text-slate/70 sm:py-4 sm:text-[22px]">{cs.category}</p>
         <h3 className="font-display mt-6 text-[26px] font-light leading-[1.15] tracking-[-0.01em] sm:text-[32px]">{cs.title}</h3>
         <p className="mt-3 text-sm text-slate/55">{cs.client}</p>
-        <p className="mt-5 line-clamp-4 text-[15px] leading-[1.65] text-slate/80 md:line-clamp-none sm:text-[16px]">{cs.summary}</p>
-        <p className="mt-5 text-[13px] leading-relaxed text-slate/45"><span className="text-slate/60">{cs.role}</span><span className="hidden md:inline"> · {cs.stack.join(" · ")}</span></p>
+        <p className="mt-5 text-[15px] leading-[1.65] text-slate/80 sm:text-[16px]">{cs.summary}</p>
+        <p className="mt-5 text-[13px] leading-relaxed text-slate/45"><span className="text-slate/60">{cs.role}</span> · {cs.stack.join(" · ")}</p>
         {cs.link && (
           external
             ? <a href={cs.link.href} target="_blank" rel="noreferrer" tabIndex={active ? 0 : -1} className="label mt-6 inline-block text-signal hover:text-slate">{cs.link.label}</a>
             : <Link href={cs.link.href} tabIndex={active ? 0 : -1} className="label mt-6 inline-block text-signal hover:text-slate">{cs.link.label}</Link>
         )}
       </article>
-      <div className="float-late relative order-first h-[210px] w-full overflow-hidden rounded-[28px] border border-white/12 bg-white/5 shadow-[0_30px_80px_rgba(0,0,0,0.45)] sm:h-[260px] sm:rounded-[32px] md:order-none md:aspect-[4/3] md:h-auto">
+      <div className="float-late relative order-first h-[210px] w-full overflow-hidden rounded-[28px] border border-white/12 bg-white/5 shadow-[0_30px_80px_rgba(0,0,0,0.45)] sm:h-[300px] sm:rounded-[32px] md:h-[360px] lg:order-none lg:aspect-[4/3] lg:h-auto">
         <Media media={cs.media} stats={cs.stats} />
       </div>
     </div>
@@ -125,7 +125,7 @@ export default function WorkCarousel() {
     const el = activeRef.current;
     if (!el) return;
     const measure = () => {
-      const stacked = window.innerWidth < 768;
+      const stacked = window.innerWidth < 1024;
       if (stacked) { setTrackH(el.offsetHeight); return; }
       const kids = Array.from(el.children) as HTMLElement[];
       setTrackH(Math.max(...kids.map((k) => k.offsetHeight)));
@@ -182,7 +182,7 @@ export default function WorkCarousel() {
         </div>
         <div className="flex items-center gap-4">
           <p className="label text-white/60 tabular-nums">{pad(index + 1)} / {pad(n)}</p>
-          <div className="flex gap-3 md:hidden">
+          <div className="flex gap-3 lg:hidden">
             <Arrow dir={-1} onClick={() => go(-1)} />
             <Arrow dir={1} onClick={() => go(1)} />
           </div>
@@ -201,13 +201,13 @@ export default function WorkCarousel() {
         onDragEnd={onDragEnd}
         onWheel={onWheel}
         style={{ height: trackH ?? undefined }}
-        className="relative mx-auto mt-14 h-[640px] max-w-[1240px] cursor-grab touch-pan-y active:cursor-grabbing md:h-[520px]"
+        className="relative mx-auto mt-14 h-[640px] max-w-[1240px] cursor-grab touch-pan-y active:cursor-grabbing lg:h-[520px]"
         aria-roledescription="carousel"
       >
         {slideW > 0 && (
           <>
-            <Arrow dir={-1} onClick={() => go(-1)} className="absolute top-1/2 z-10 hidden -translate-y-1/2 md:grid" style={{ left: (slideW - cardW) / 2 - 72 }} />
-            <Arrow dir={1} onClick={() => go(1)} className="absolute top-1/2 z-10 hidden -translate-y-1/2 md:grid" style={{ left: (slideW + cardW) / 2 + 24 }} />
+            <Arrow dir={-1} onClick={() => go(-1)} className="absolute top-1/2 z-10 hidden -translate-y-1/2 lg:grid" style={{ left: (slideW - cardW) / 2 - 72 }} />
+            <Arrow dir={1} onClick={() => go(1)} className="absolute top-1/2 z-10 hidden -translate-y-1/2 lg:grid" style={{ left: (slideW + cardW) / 2 + 24 }} />
           </>
         )}
         {slideW > 0 && caseStudies.map((cs, i) => {

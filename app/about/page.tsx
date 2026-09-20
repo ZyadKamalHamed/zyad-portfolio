@@ -6,7 +6,7 @@ export const metadata = { title: "About · Zyad Kamal Hamed" };
 
 function Photo({ entry }: { entry: TimelineEntry }) {
   return (
-    <div className={`grid aspect-[200/214] w-[160px] shrink-0 place-items-center overflow-hidden border border-white/70 md:w-[200px] ${entry.image?.fit === "contain" ? "bg-white p-6" : "bg-white/[0.06]"}`}>
+    <div className={`grid aspect-[200/214] w-[160px] shrink-0 place-items-center overflow-hidden border border-white/70 lg:w-[200px] ${entry.image?.fit === "contain" ? "bg-white p-6" : "bg-white/[0.06]"}`}>
       {entry.image
         ? <Image src={entry.image.src} alt={entry.image.alt} width={200} height={214} className={`h-full w-full ${entry.image.fit === "contain" ? "object-contain" : "object-cover"}`} />
         : <span className="eyebrow text-[10px] text-white/50">Add image</span>}
@@ -16,7 +16,7 @@ function Photo({ entry }: { entry: TimelineEntry }) {
 
 function Copy({ entry, align }: { entry: TimelineEntry; align: "left" | "right" }) {
   return (
-    <div className={`max-w-[300px] pt-1 ${align === "right" ? "md:text-right" : ""}`}>
+    <div className={`max-w-[300px] pt-1 ${align === "right" ? "lg:text-right" : ""}`}>
       <h2 className="text-[20px] font-medium leading-snug">{entry.title}</h2>
       <p className="eyebrow mt-2 text-white/60">{entry.meta}</p>
       <p className="mt-3 text-[15px] leading-relaxed text-white/78">{entry.body}</p>
@@ -39,13 +39,13 @@ export default function AboutPage() {
         </div>
 
         {/* Phones: one column on a left rail. Desktop: centre rail, entries alternate sides. */}
-        <ol className="relative mt-20 flex flex-col gap-14 md:gap-16">
-          <span className="absolute left-[5px] top-0 h-full w-px bg-white/35 md:left-1/2 md:-translate-x-1/2" aria-hidden />
+        <ol className="relative mt-20 flex flex-col gap-14 lg:gap-16">
+          <span className="absolute left-[5px] top-0 h-full w-px bg-white/35 lg:left-1/2 lg:-translate-x-1/2" aria-hidden />
           {timeline.map((t, i) => {
             const left = i % 2 === 0;
             return (
-              <li key={`${t.year}-${t.title}`} className="relative md:grid md:grid-cols-2">
-                <div className="flex flex-col gap-4 pl-8 md:hidden">
+              <li key={`${t.year}-${t.title}`} className="relative lg:grid lg:grid-cols-2">
+                <div className="flex flex-col gap-4 pl-8 lg:hidden">
                   <Dot className="absolute left-0 top-1 h-3 w-3" />
                   <p className="eyebrow text-white/70">{t.year}</p>
                   <Photo entry={t} />
@@ -53,7 +53,7 @@ export default function AboutPage() {
                 </div>
                 {left ? (
                   <>
-                    <div className="hidden items-start justify-end gap-4 md:flex">
+                    <div className="hidden items-start justify-end gap-4 lg:flex">
                       <Copy entry={t} align="right" />
                       <Photo entry={t} />
                       <div className="-mr-3 flex items-start gap-3 pt-1">
@@ -61,12 +61,12 @@ export default function AboutPage() {
                         <Dot className="mt-[1px] h-6 w-6" />
                       </div>
                     </div>
-                    <div className="hidden md:block" />
+                    <div className="hidden lg:block" />
                   </>
                 ) : (
                   <>
-                    <div className="hidden md:block" />
-                    <div className="hidden items-start gap-4 md:flex">
+                    <div className="hidden lg:block" />
+                    <div className="hidden items-start gap-4 lg:flex">
                       <div className="-ml-3 flex items-start gap-3 pt-1">
                         <Dot className="mt-[1px] h-6 w-6" />
                         <p className="eyebrow text-white/70">{t.year}</p>

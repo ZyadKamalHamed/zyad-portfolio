@@ -7,7 +7,7 @@ const ease = [0.22, 1, 0.36, 1] as const;
 export default function ServicesPanel() {
   return (
     <section id="services" className="night scroll-mt-6 rounded-t-[40px] px-5 pb-28 pt-14 shadow-[0_-40px_80px_rgba(0,0,0,0.35)] sm:px-10 sm:pt-20">
-      <div className="mx-auto grid max-w-[1400px] gap-10 md:grid-cols-3">
+      <div className="mx-auto grid max-w-[1400px] gap-6 lg:grid-cols-3 lg:gap-10">
         {services.map((s, i) => (
           <motion.div
             key={s.key}
@@ -20,7 +20,7 @@ export default function ServicesPanel() {
             className="flex cursor-default flex-col rounded-3xl border px-6 py-8 sm:px-8"
           >
             <p className="eyebrow text-white/50">0{i + 1}</p>
-            <h2 className="font-display mt-3 text-[40px] font-light uppercase tracking-wide">{s.title}</h2>
+            <h2 className="font-display mt-3 text-[clamp(30px,3vw,40px)] font-light uppercase tracking-wide">{s.title}</h2>
             <p className="mt-3 text-lg text-white/90">{s.tagline}</p>
             <p className="mt-3 max-w-[420px] text-[15px] leading-relaxed text-white/60">{s.copy}</p>
             <ul className="mt-8">

@@ -12,7 +12,7 @@ export default function Home() {
         <ServicesPanel />
         <WorkCarousel />
         <section id="contact" className="night scroll-mt-6 px-5 py-24 sm:px-10">
-          <div className="mx-auto grid max-w-[1100px] gap-16 md:grid-cols-[1fr_1.2fr]">
+          <div className="mx-auto grid max-w-[1100px] gap-12 lg:grid-cols-[1fr_1.2fr] lg:gap-16">
             <div>
               <p className="eyebrow text-white/50">Contact</p>
               <h2 className="font-display mt-3 text-[clamp(40px,6vw,64px)] font-light leading-none">Let&apos;s build.</h2>
