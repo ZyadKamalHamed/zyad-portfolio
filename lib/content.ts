@@ -107,7 +107,7 @@ export const caseStudies: CaseStudy[] = [
 ];
 
 export const contactIntro =
-  "Tell me what you are trying to do. I reply within a day, and I will tell you straight if I am not the right person for it.";
+  "Tell me what you're thinking and I will tell you if I'm the right person for it.";
 
 export const aboutBio =
   "Hi, I am Zyad. I work full-time as the sole AI specialist at a mid-sized Sydney creative agency, I am in the final year of a Bachelor of AI at UTS, and I freelance as a designer and developer for small businesses that want a proper presence online and systems that run without them. Here is how I got here.";
