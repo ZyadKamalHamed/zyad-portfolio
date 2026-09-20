@@ -18,7 +18,7 @@ export default function ContactForm() {
     return (
       <div className="rounded-3xl border border-white/10 bg-white/[0.03] p-8">
         <p className="font-display text-2xl font-light">Thanks, got it.</p>
-        <p className="mt-2 text-white/70">I will be in touch within a day.</p>
+        <p className="mt-2 text-white/70">I will be in touch soon!</p>
       </div>
     );
   }

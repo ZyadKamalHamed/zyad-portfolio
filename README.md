@@ -1,16 +1,33 @@
-# zyad-portfolio-v2
+# Zyad Kamal Hamed, portfolio
 
-Portfolio and freelance site for Zyad Kamal Hamed. Next.js App Router, Tailwind v4, deployed on Vercel.
+Live at [zyad-portfolio-sage.vercel.app](https://zyad-portfolio-sage.vercel.app).
 
-Pages: `/` (hero, Design / Develop / Automate, selected case studies), `/services`, `/case-studies`, `/about` (timeline stubbed "coming soon"), `/contact` (form → `/api/contact`).
+One-page freelance and portfolio site: a sticky sky hero with drifting clouds, three services, a draggable case study carousel with looping demo videos, a contact form, and an About page with a timeline. Designed in Figma, built with Next.js.
 
-- Fonts: Sora (display), Geist (body), Geist Mono (labels) via `next/font/google`.
-- Colours: Cloud `#FFFFFF`, Slate `#1C2733`, Sky `#8FC1E8`, Signal `#3D7FD1`, Iris `#8B7BD8` (see `app/globals.css`).
-- Sky background is the `Cloud-export` frame from the Figma file (a shader fill, exported to `public/img/sky.jpg`).
-- Copy for services and case studies lives in `lib/content.ts`.
-- Contact form emails through Resend when `RESEND_API_KEY` is set (see `.env.example`); otherwise it logs server-side and still returns success.
+## Stack
 
-```
+- Next.js 16 (App Router), React 19, TypeScript
+- Tailwind v4 with a five-colour palette (cloud, slate, sky, signal, iris)
+- `motion` for the hero fade, section reveals, nav bubble and carousel spring
+- Sora, Geist and Geist Mono via `next/font`
+- Contact form posts to `app/api/contact` and sends through Resend when `RESEND_API_KEY` is set; without it the message is logged server-side and the form still succeeds
+- Deployed on Vercel
+
+## Run it
+
+```bash
+npm install
+cp .env.example .env.local   # add RESEND_API_KEY to send real email
 npm run dev
-npm run build
 ```
+
+## Where things live
+
+- `lib/content.ts` holds all copy: services, case studies, contact intro, About bio and timeline entries. Edit there, not in components.
+- `components/` has the Hero, Clouds, ServicesPanel, WorkCarousel, ContactForm, Nav, Footer and Headshot.
+- `public/case/` holds the case study videos and posters. `scripts/convert-video.sh <recording.mov> <slug>` converts a screen recording into the right mp4 and poster.
+- `public/img/` holds the headshot, sky and timeline images.
+
+## Case studies
+
+Solemate (landing page), By George! Food & Coffee (e-commerce), SafeSize Triage (triage platform, private client work) and JARVIS (personal AI operating system, [repo](https://github.com/ZyadKamalHamed/jarvis)).
