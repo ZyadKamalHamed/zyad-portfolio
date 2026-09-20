@@ -53,7 +53,12 @@ export default function ContactForm() {
       </fieldset>
       <label className="flex flex-col gap-2">
         <span className="eyebrow text-white/50">What do you need?</span>
-        <select name="service" className={field} defaultValue="Not sure yet">
+        <select
+          name="service"
+          defaultValue="Not sure yet"
+          className={`${field} appearance-none bg-no-repeat pr-12`}
+          style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 16 16'%3E%3Cpath d='M3 6l5 5 5-5' stroke='%23ffffff' stroke-opacity='0.75' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E\")", backgroundPosition: "right 18px center" }}
+        >
           {["Design", "Develop", "Automate", "All three", "Hiring / job opportunity", "Not sure yet"].map((o) => <option key={o} className="bg-slate">{o}</option>)}
         </select>
       </label>
