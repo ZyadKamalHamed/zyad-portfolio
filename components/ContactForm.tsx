@@ -5,12 +5,15 @@ type State = "idle" | "sending" | "sent" | "error";
 
 export default function ContactForm() {
   const [state, setState] = useState<State>("idle");
-  const [contact, setContact] = useState<"Email" | "SMS" | "Either">("Email");
+  const [contact, setContact] = useState({ Email: true, Phone: true });
+  const toggle = (k: "Email" | "Phone") => setContact((c) => (c[k] && !c[k === "Email" ? "Phone" : "Email"] ? c : { ...c, [k]: !c[k] }));
+  const phoneOnly = contact.Phone && !contact.Email;
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setState("sending");
     const data = Object.fromEntries(new FormData(e.currentTarget).entries());
+    data.contact = (["Email", "Phone"] as const).filter((k) => contact[k]).join(" and ");
     const res = await fetch("/api/contact", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(data) });
     setState(res.ok ? "sent" : "error");
   }
@@ -37,16 +40,19 @@ export default function ContactForm() {
         <label className="flex flex-col gap-2"><span className="eyebrow text-white/50">Business</span><input name="business" className={field} placeholder="Optional" /></label>
         <label className="flex flex-col gap-2">
           <span className="eyebrow text-white/50">Phone</span>
-          <input name="phone" type="tel" autoComplete="tel" required={contact !== "Email"} className={field} placeholder={contact === "Email" ? "Optional" : "Needed for SMS"} />
+          <input name="phone" type="tel" autoComplete="tel" required={phoneOnly} className={field} placeholder={phoneOnly ? "Needed if you prefer a call or text" : "Optional"} />
         </label>
       </div>
       <fieldset className="flex flex-col gap-2">
         <legend className="eyebrow text-white/50">Preferred contact</legend>
-        <div className="mt-2 flex flex-wrap gap-2">
-          {(["Email", "SMS", "Either"] as const).map((o) => (
-            <label key={o} className={`label cursor-pointer rounded-full border px-5 py-2.5 transition-colors ${contact === o ? "border-white bg-white text-slate" : "border-white/20 text-white/70 hover:border-white/50 hover:text-white"}`}>
-              <input type="radio" name="contact" value={o} checked={contact === o} onChange={() => setContact(o)} className="sr-only" />
-              {o}
+        <div className="mt-2 flex flex-wrap gap-3">
+          {(["Email", "Phone"] as const).map((k) => (
+            <label key={k} className={`label flex cursor-pointer items-center gap-3 rounded-full border px-5 py-2.5 transition-colors ${contact[k] ? "border-white/60 text-white" : "border-white/20 text-white/55 hover:border-white/40"}`}>
+              <input type="checkbox" checked={contact[k]} onChange={() => toggle(k)} className="sr-only" />
+              <span className={`grid h-4 w-4 place-items-center rounded-[4px] border ${contact[k] ? "border-white bg-white" : "border-white/40"}`} aria-hidden>
+                {contact[k] && <svg viewBox="0 0 12 12" width="10" height="10" fill="none"><path d="M2 6.5l2.5 2.5L10 3.5" stroke="#1C2733" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" /></svg>}
+              </span>
+              {k}
             </label>
           ))}
         </div>
