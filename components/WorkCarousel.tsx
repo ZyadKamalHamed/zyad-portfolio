@@ -85,8 +85,13 @@ function Slide({ cs, active, onSelect, innerRef }: { cs: CaseStudy; active: bool
         <p className="inline-block rounded-xl border border-slate/25 px-5 py-3 font-mono text-[18px] uppercase tracking-[0.14em] text-slate/70 sm:px-6 sm:text-[22px]">{cs.category}</p>
         <h3 className="font-display mt-6 text-[26px] font-light leading-[1.15] tracking-[-0.01em] sm:text-[32px]">{cs.title}</h3>
         <p className="mt-3 text-sm text-slate/55">{cs.client}</p>
-        <p className="mt-5 line-clamp-5 text-[15px] leading-[1.65] text-slate/80 md:line-clamp-none sm:text-[16px]">{cs.summary}</p>
-        <p className="mt-5 text-[13px] leading-relaxed text-slate/45">{cs.stack.join(" · ")}</p>
+        <p className="mt-5 line-clamp-4 text-[15px] leading-[1.65] text-slate/80 md:line-clamp-none sm:text-[16px]">{cs.summary}</p>
+        <ul className="mt-5 flex flex-wrap gap-2" aria-label="What was delivered">
+          {cs.facts.map((f) => (
+            <li key={f} className="rounded-lg border border-slate/15 bg-slate/[0.04] px-3 py-1.5 font-mono text-[11px] uppercase tracking-[0.08em] text-slate/70">{f}</li>
+          ))}
+        </ul>
+        <p className="mt-5 text-[13px] leading-relaxed text-slate/45"><span className="text-slate/60">{cs.role}</span> · {cs.stack.join(" · ")}</p>
         {cs.link && (
           external
             ? <a href={cs.link.href} target="_blank" rel="noreferrer" tabIndex={active ? 0 : -1} className="label mt-6 inline-block text-signal hover:text-slate">{cs.link.label}</a>

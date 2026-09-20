@@ -36,6 +36,7 @@ export type CaseStudy = {
   summary: string;
   decision: string;
   stack: string[];
+  facts: string[];
   stats?: { value: string; label: string }[];
   media: CaseMedia;
   link?: { href: string; label: string };
@@ -49,7 +50,8 @@ export const caseStudies: CaseStudy[] = [
     client: "Solemate · Custom footwear landing page",
     role: "Design translation · Front-end · Motion",
     summary:
-      "A scroll-driven landing page for a custom footwear brand. One pinned stage runs the whole story, from a scanned foot contour to a rotating sole and exploded pressure layers, with every element driven by scroll progress.",
+      "A scroll-driven landing page for a custom footwear brand. One pinned stage tells the whole story as you scroll, from a scanned foot contour to a rotating sole and exploded pressure layers, and the same choreography holds on a phone, a laptop and a wide screen.",
+    facts: ["Scroll-driven story", "One pinned stage", "Holds at every screen size"],
     decision:
       "Scroll progress, not time, drives the motion. The page never plays at the visitor, it responds to them, and the same timeline holds at every window size because every beat is defined as a fraction of the track rather than in pixels.",
     stack: ["Next.js", "React", "Motion"],
@@ -64,6 +66,7 @@ export const caseStudies: CaseStudy[] = [
     role: "Design · Build · Shop · Maintain",
     summary:
       "A local cafe's website and online shop, designed and built end to end. Behind it sits a password-protected dashboard where the owner manages orders and stock, Stripe Checkout for payments, and automated email and SMS that keep customers updated on their orders. Kept current through every menu change since launch.",
+    facts: ["20 products", "Stripe checkout", "Owner dashboard", "Email and SMS updates"],
     decision:
       "The owner edits products, prices and stock from a small admin console, and checkout only ever trusts the server-side catalog. A hidden product cannot be listed, linked to or bought, but it stays editable, so going offline is a toggle rather than a deletion.",
     stack: ["Figma", "HTML/CSS/JS", "Stripe Checkout", "Redis", "Resend", "Vercel"],
@@ -77,7 +80,8 @@ export const caseStudies: CaseStudy[] = [
     client: "SafeSize Triage · with The General Store",
     role: "Discovery · Data model · UX · Security",
     summary:
-      "SafeSize 3D foot scanners sit on shop floors across Asia-Pacific. When one breaks, the fix used to start with a phone call. Triage replaces that: machines report their own faults, store staff report through an AI chatbot, and every fault becomes a ticket routed to the right support tier across three countries.",
+      "SafeSize 3D foot scanners sit on shop floors across Asia-Pacific, and a fault used to start with a phone call. Now store staff describe the problem to a trained chatbot, machines report their own errors, and every fault becomes a ticket routed to the right support tier across three countries.",
+    facts: ["Trained AI chatbot", "3 countries", "46 security policies", "21 screens"],
     decision:
       "Row-level security in Postgres, not application code, decides who sees what. Stores never see tiers, countries or the supply chain behind their fix, and every region choice keeps the data in Australia.",
     stack: ["Next.js", "Supabase Postgres", "Claude on AWS Bedrock", "Twilio"],
@@ -97,7 +101,8 @@ export const caseStudies: CaseStudy[] = [
     client: "JARVIS · Personal AI operating system",
     role: "Everything",
     summary:
-      "A personal AI operating system that runs as one zero-dependency Node process over a folder of JSON, with a browser as the only client. Scheduled agents write the morning briefing, plan the day and file the tasks; the dashboard renders that state and reads it back. It rewrites itself nightly, one change at a time, gated on its own tests.",
+      "A personal AI operating system that runs a full-time job and a full-time degree from one dashboard. Scheduled agents write the morning briefing, plan the day and file the tasks, with voice control and secure access from a phone. It also improves itself nightly, one tested change at a time.",
+    facts: ["Morning briefing agent", "Voice control", "Phone access", "Self-updating nightly"],
     decision:
       "Stealth mode strips personal data server-side, before the response is serialised, rather than hiding it with CSS on the client. Anything the browser never receives cannot leak off a shared screen.",
     stack: ["Node", "JSON store", "Web Speech", "Tailscale"],
