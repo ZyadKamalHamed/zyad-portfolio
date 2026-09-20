@@ -82,8 +82,8 @@ function Slide({ cs, active, onSelect, innerRef }: { cs: CaseStudy; active: bool
       aria-hidden={!active}
     >
       <article className="float rounded-[28px] bg-white p-6 text-slate shadow-[0_30px_80px_rgba(0,0,0,0.45)] sm:rounded-[32px] sm:p-10">
-        <span className="eyebrow inline-block rounded-full border border-slate/20 px-3 py-1.5 text-slate/70">{cs.category}</span>
-        <h3 className="font-display mt-4 text-[28px] font-light leading-tight sm:mt-5 sm:text-[40px]">{cs.title}</h3>
+        <h3 className="font-display text-[32px] font-light leading-tight sm:text-[44px]">{cs.category}</h3>
+        <p className="mt-3 text-[18px] font-medium leading-snug text-slate sm:text-[20px]">{cs.title}</p>
         <p className="mt-2 text-sm text-slate/60">{cs.client}</p>
         <p className="mt-4 line-clamp-4 text-[15px] leading-relaxed text-slate/80 sm:mt-5 md:line-clamp-none">{cs.summary}</p>
         <p className="mt-4 text-sm text-slate/50 sm:mt-5">{cs.stack.join(" · ")}</p>
