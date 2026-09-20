@@ -5,6 +5,7 @@ type State = "idle" | "sending" | "sent" | "error";
 
 export default function ContactForm() {
   const [state, setState] = useState<State>("idle");
+  const [contact, setContact] = useState<"Email" | "SMS" | "Either">("Email");
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -32,7 +33,24 @@ export default function ContactForm() {
         <label className="flex flex-col gap-2"><span className="eyebrow text-white/50">Name</span><input name="name" required className={field} placeholder="Your name" /></label>
         <label className="flex flex-col gap-2"><span className="eyebrow text-white/50">Email</span><input name="email" type="email" required className={field} placeholder="you@company.com" /></label>
       </div>
-      <label className="flex flex-col gap-2"><span className="eyebrow text-white/50">Business</span><input name="business" className={field} placeholder="Optional" /></label>
+      <div className="grid gap-4 sm:grid-cols-2">
+        <label className="flex flex-col gap-2"><span className="eyebrow text-white/50">Business</span><input name="business" className={field} placeholder="Optional" /></label>
+        <label className="flex flex-col gap-2">
+          <span className="eyebrow text-white/50">Phone</span>
+          <input name="phone" type="tel" autoComplete="tel" required={contact !== "Email"} className={field} placeholder={contact === "Email" ? "Optional" : "Needed for SMS"} />
+        </label>
+      </div>
+      <fieldset className="flex flex-col gap-2">
+        <legend className="eyebrow text-white/50">Preferred contact</legend>
+        <div className="mt-2 flex flex-wrap gap-2">
+          {(["Email", "SMS", "Either"] as const).map((o) => (
+            <label key={o} className={`label cursor-pointer rounded-full border px-5 py-2.5 transition-colors ${contact === o ? "border-white bg-white text-slate" : "border-white/20 text-white/70 hover:border-white/50 hover:text-white"}`}>
+              <input type="radio" name="contact" value={o} checked={contact === o} onChange={() => setContact(o)} className="sr-only" />
+              {o}
+            </label>
+          ))}
+        </div>
+      </fieldset>
       <label className="flex flex-col gap-2">
         <span className="eyebrow text-white/50">What do you need?</span>
         <select name="service" className={field} defaultValue="Not sure yet">
