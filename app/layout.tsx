@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Sora, Geist, Geist_Mono } from "next/font/google";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
@@ -14,6 +14,12 @@ export const metadata: Metadata = {
     "I design and build websites and AI tools for businesses, and work as an AI Specialist at a Sydney creative agency.",
   metadataBase: new URL("https://zyad-portfolio-sage.vercel.app"),
   openGraph: { title: "Zyad Kamal Hamed", description: "Design. Develop. Automate.", images: ["/img/sky-small.jpg"] },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#1c2733",
+  viewportFit: "cover",
+  colorScheme: "dark",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

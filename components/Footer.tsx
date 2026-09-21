@@ -15,7 +15,7 @@ const elsewhere = [
 
 export default function Footer() {
   return (
-    <footer className="footer-ground px-5 pb-10 pt-14 sm:px-10">
+    <footer className="footer-ground px-5 pb-[calc(2.5rem+env(safe-area-inset-bottom))] pt-14 sm:px-10">
       <div className="mx-auto max-w-[1240px]">
         <div className="grid gap-10 sm:grid-cols-2 md:grid-cols-[1.6fr_1fr_1fr]">
           <div className="sm:col-span-2 md:col-span-1">

@@ -10,7 +10,7 @@ export default function Hero() {
   const scale = useTransform(scrollY, [0, 520], [1, 0.94]);
 
   return (
-    <section id="hero" className="sky sticky! top-0 flex h-[100svh] flex-col items-center justify-center overflow-hidden px-5 text-center">
+    <section id="hero" className="sky sticky! top-0 flex h-[100svh] flex-col items-center justify-center overflow-hidden px-5 pt-[env(safe-area-inset-top)] text-center">
       <Clouds />
       <motion.div style={{ opacity, y, scale }} className="z-10 flex flex-col items-center gap-8">
         <h1 className="font-display text-[clamp(64px,10vw,96px)] font-light leading-none tracking-[-0.02em] text-slate/90">Zyad</h1>
