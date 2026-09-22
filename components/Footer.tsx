@@ -11,6 +11,7 @@ const elsewhere = [
   { href: "https://github.com/ZyadKamalHamed", label: "GitHub" },
   { href: "https://www.linkedin.com/in/zyadkamalhamed/", label: "LinkedIn" },
   { href: "mailto:zyad2408@live.com.au", label: "Email" },
+  { href: "/cv/Zyad-Kamal-Hamed-CV.pdf", label: "CV (PDF)", download: true },
 ];
 
 export default function Footer() {
@@ -35,7 +36,7 @@ export default function Footer() {
             <ul className="mt-4 flex flex-col gap-3">
               {elsewhere.map((l) => (
                 <li key={l.label}>
-                  <a href={l.href} className="label text-white/80 transition-colors hover:text-white" {...(l.href.startsWith("http") ? { target: "_blank", rel: "noreferrer" } : {})}>{l.label}</a>
+                  <a href={l.href} className="label text-white/80 transition-colors hover:text-white" {...(l.href.startsWith("http") ? { target: "_blank", rel: "noreferrer" } : {})} {...("download" in l ? { download: true } : {})}>{l.label}</a>
                 </li>
               ))}
             </ul>

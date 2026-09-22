@@ -112,6 +112,16 @@ export const contactIntro =
 export const aboutBio =
   "Hi, I am Zyad. I work full-time as the sole AI specialist at a mid-sized Sydney creative agency, I am in the final year of a Bachelor of AI at UTS, and I freelance as a designer and developer for small businesses that want a proper presence online and systems that run without them. Here is how I got here.";
 
+// The PDF lives at public/cv. Replace the file in place when it changes: the URL has no date in it,
+// so links already sent to recruiters keep working. Update `updated` and `pages` when you do.
+export const resume = {
+  href: "/cv/Zyad-Kamal-Hamed-CV.pdf",
+  filename: "Zyad-Kamal-Hamed-CV.pdf",
+  updated: "20 Sep 2026",
+  pages: 2,
+  railIntro: "All of the above, plus the detail, on two pages.",
+};
+
 export type TimelineEntry = { year: string; title: string; meta: string; body: string; image?: { src: string; alt: string; fit?: "cover" | "contain" } };
 
 export const timeline: TimelineEntry[] = [
