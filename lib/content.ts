@@ -11,7 +11,7 @@ export const services = [
     title: "Develop",
     tagline: "A live link in days, not months.",
     copy: "Once you are happy with the design, AI-assisted development turns it into a working product fast, without cutting corners on the code you end up owning. Deployed, tested and live on your own domain.",
-    items: ["E-commerce platforms", "Sales and analytics dashboards", "Landing pages", "AI systems", "AI generated media"],
+    items: ["E-commerce platforms", "Sales and analytics dashboards", "Landing pages", "AI systems", "Visual media"],
   },
   {
     key: "automate",
