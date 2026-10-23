@@ -17,7 +17,7 @@ export default function Hero() {
         <Headshot priority className="h-[200px] w-[200px] sm:h-[240px] sm:w-[240px]" />
         <p className="label text-slate/80">Designer · Developer · AI Engineer</p>
         <p className="max-w-[560px] text-[18px] leading-relaxed text-slate/85 sm:text-[20px]">
-          I design and build websites and AI tools for businesses, and work as an AI Specialist at a Sydney creative agency.
+          I design and build visual media, websites and automations for businesses, and work as an AI Specialist within a Sydney creative agency.
         </p>
       </motion.div>
       <motion.a style={{ opacity }} href="#services" aria-label="Scroll to services" className="bob absolute! bottom-10 left-1/2 z-10 -translate-x-1/2">

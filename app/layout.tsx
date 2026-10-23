@@ -11,7 +11,7 @@ const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"]
 export const metadata: Metadata = {
   title: "Zyad Kamal Hamed · Designer, Developer, AI Engineer",
   description:
-    "I design and build websites and AI tools for businesses, and work as an AI Specialist at a Sydney creative agency.",
+    "I design and build visual media, websites and automations for businesses, and work as an AI Specialist within a Sydney creative agency.",
   metadataBase: new URL("https://zyad-portfolio-sage.vercel.app"),
   openGraph: { title: "Zyad Kamal Hamed", description: "Design. Develop. Automate.", images: ["/img/sky-small.jpg"] },
 };
