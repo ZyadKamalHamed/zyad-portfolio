@@ -47,7 +47,7 @@ export default function ContactForm() {
         <legend className="eyebrow text-white/50">Preferred contact</legend>
         <div className="mt-2 flex flex-wrap gap-3">
           {(["Email", "Phone"] as const).map((k) => (
-            <label key={k} className={`label flex cursor-pointer items-center gap-3 rounded-full border px-5 py-2.5 transition-colors ${contact[k] ? "border-white/60 text-white" : "border-white/20 text-white/55 hover:border-white/40"}`}>
+            <label key={k} className={`label flex cursor-pointer items-center gap-3 rounded-full border px-5 py-2.5 transition-colors has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-white ${contact[k] ? "border-white/60 text-white" : "border-white/20 text-white/55 hover:border-white/40"}`}>
               <input type="checkbox" checked={contact[k]} onChange={() => toggle(k)} className="sr-only" />
               <span className={`grid h-4 w-4 place-items-center rounded-[4px] border ${contact[k] ? "border-white bg-white" : "border-white/40"}`} aria-hidden>
                 {contact[k] && <svg viewBox="0 0 12 12" width="10" height="10" fill="none"><path d="M2 6.5l2.5 2.5L10 3.5" stroke="#1C2733" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" /></svg>}
@@ -72,7 +72,7 @@ export default function ContactForm() {
       <button type="submit" disabled={state === "sending"} className="label mt-2 rounded-full bg-white px-8 py-4 text-slate hover:bg-white/90 disabled:opacity-60">
         {state === "sending" ? "Sending…" : "Send message →"}
       </button>
-      {state === "error" && <p className="text-sm text-red-300">Something went wrong. Email me directly at zyad2408@live.com.au.</p>}
+      {state === "error" && <p className="text-sm text-red-300">Something went wrong. Email me directly at zyadkamalhamed@gmail.com.</p>}
     </form>
   );
 }

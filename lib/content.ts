@@ -24,7 +24,7 @@ export const services = [
 
 export type CaseMedia =
   | { kind: "image"; src: string; alt: string }
-  | { kind: "video"; src: string; poster: string; alt: string }
+  | { kind: "video"; src: string; poster: string; alt: string; ratio: number }
   | { kind: "stack"; images: { src: string; alt: string }[]; alt: string };
 
 export type CaseStudy = {
@@ -53,7 +53,7 @@ export const caseStudies: CaseStudy[] = [
     decision:
       "Scroll progress, not time, drives the motion. The page never plays at the visitor, it responds to them, and the same timeline holds at every window size because every beat is defined as a fraction of the track rather than in pixels.",
     stack: ["Next.js", "React", "Motion", "AI generated assets"],
-    media: { kind: "video", src: "/case/solemate.mp4", poster: "/case/solemate.jpg", alt: "Solemate landing page" },
+    media: { kind: "video", src: "/case/solemate.mp4", poster: "/case/solemate.jpg", alt: "Solemate landing page", ratio: 1600 / 1004 },
     link: { href: "/#contact", label: "Private repository, walkthrough on request" },
   },
   {
@@ -67,7 +67,7 @@ export const caseStudies: CaseStudy[] = [
     decision:
       "The owner edits products, prices and stock from a small admin console, and checkout only ever trusts the server-side catalog. A hidden product cannot be listed, linked to or bought, but it stays editable, so going offline is a toggle rather than a deletion.",
     stack: ["Figma", "HTML/CSS/JS", "Stripe Checkout", "Redis", "Resend", "Vercel"],
-    media: { kind: "video", src: "/case/bygeorge.mp4", poster: "/case/bygeorge.jpg", alt: "By George website" },
+    media: { kind: "video", src: "/case/bygeorge.mp4", poster: "/case/bygeorge.jpg", alt: "By George website", ratio: 1600 / 1004 },
     link: { href: "https://bygeorgecoffee.com.au", label: "Visit live site ↗" },
   },
   {
@@ -87,7 +87,7 @@ export const caseStudies: CaseStudy[] = [
       { value: "21", label: "screens" },
       { value: "3", label: "countries" },
     ],
-    media: { kind: "video", src: "/case/safesize.mp4", poster: "/case/safesize.jpg", alt: "SafeSize Triage customer demo" },
+    media: { kind: "video", src: "/case/safesize.mp4", poster: "/case/safesize.jpg", alt: "SafeSize Triage customer demo", ratio: 1600 / 1004 },
     link: { href: "/#contact", label: "Private client repository, walkthrough on request" },
   },
   {
@@ -101,7 +101,7 @@ export const caseStudies: CaseStudy[] = [
     decision:
       "Stealth mode strips personal data server-side, before the response is serialised, rather than hiding it with CSS on the client. Anything the browser never receives cannot leak off a shared screen.",
     stack: ["Claude Code", "Claude API", "ElevenLabs API", "MCP", "Node"],
-    media: { kind: "video", src: "/case/jarvis.mp4", poster: "/case/jarvis.jpg", alt: "JARVIS HUD" },
+    media: { kind: "video", src: "/case/jarvis.mp4", poster: "/case/jarvis.jpg", alt: "JARVIS HUD", ratio: 1600 / 960 },
     link: { href: "https://github.com/ZyadKamalHamed/jarvis", label: "View repository ↗" },
   },
 ];
@@ -110,14 +110,14 @@ export const contactIntro =
   "Tell me what you're thinking and I will tell you if I'm the right person for it.";
 
 export const aboutBio =
-  "Hi, I am Zyad. I work full-time as the sole AI specialist at a mid-sized Sydney creative agency, I am in the final year of a Bachelor of AI at UTS, and I freelance as a designer and developer for small businesses that want a proper presence online and systems that run without them. Here is how I got here.";
+  "Hi, I am Zyad. I work full-time as the sole AI specialist at a mid-sized Sydney creative agency, I have a Bachelor of AI from UTS, and I freelance as a designer and developer for small businesses that want a proper presence online and systems that run without them. Here is how I got here.";
 
 // The PDF lives at public/cv. Replace the file in place when it changes: the URL has no date in it,
 // so links already sent to recruiters keep working. Update `updated` and `pages` when you do.
 export const resume = {
   href: "/cv/Zyad-Kamal-Hamed-CV.pdf",
   filename: "Zyad-Kamal-Hamed-CV.pdf",
-  updated: "20 Sep 2026",
+  updated: "5 Nov 2026",
   pages: 2,
   railIntro: "All of the above, plus the detail, on two pages.",
 };
@@ -133,8 +133,8 @@ export const timeline: TimelineEntry[] = [
     body: "Sole technical hire at a 60-person creative agency. Shipped the staff onboarding platform, wrote automation that removed 39 weeks of manual documentation a year, and trained 50+ people on AI tools.",
   },
   {
-    year: "2026",
-    title: "Bachelor of Artificial Intelligence, graduating",
+    year: "2024-2026",
+    title: "Bachelor of Artificial Intelligence",
     meta: "UTS · Aug 2024 to Dec 2026",
     image: { src: "/img/UTS-logo.png", alt: "UTS logo", fit: "contain" },
     body: "Distinction average. Final-year work includes a court keypoint detector at 0.994 mAP50 shown at UTS Tech Fest, and a RAG chatbot built for UTS FEIT students.",

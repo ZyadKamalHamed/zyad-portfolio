@@ -2,21 +2,30 @@
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion, type PanInfo } from "motion/react";
+import { motion, useReducedMotion, type PanInfo } from "motion/react";
 import { caseStudies, type CaseMedia, type CaseStudy } from "@/lib/content";
 
 const HOLD_MS = 8000;
 const ease = [0.22, 1, 0.36, 1] as const;
 const spring = { type: "spring", stiffness: 260, damping: 32, mass: 0.9 } as const;
 
-function Media({ media, stats }: { media: CaseMedia; stats?: CaseStudy["stats"] }) {
+function Media({ media, stats, playing }: { media: CaseMedia; stats?: CaseStudy["stats"]; playing: boolean }) {
   const [videoFailed, setVideoFailed] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  // Only the slide on screen plays, so phones are not decoding four videos at once.
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    if (playing) video.play().catch(() => {});
+    else video.pause();
+  }, [playing]);
   if (media.kind === "video" && !videoFailed) {
     return (
       <video
+        ref={videoRef}
         src={media.src}
         poster={media.poster}
-        autoPlay muted loop playsInline
+        muted loop playsInline preload="metadata"
         aria-label={media.alt}
         onError={() => setVideoFailed(true)}
         className="absolute inset-0 h-full w-full object-cover"
@@ -63,7 +72,7 @@ function Arrow({ dir, onClick, className = "", style }: { dir: -1 | 1; onClick: 
       onPointerDown={(e) => e.stopPropagation()}
       aria-label={dir < 0 ? "Previous case study" : "Next case study"}
       style={style}
-      className={`glass-on-night grid h-12 w-12 place-items-center rounded-full hover:bg-white/15 ${className}`}
+      className={`glass-on-night grid h-12 w-12 place-items-center rounded-full ${className}`}
     >
       <svg viewBox="0 0 16 16" width="16" height="16" fill="none" aria-hidden>
         <path d={dir < 0 ? "M10 2 4 8l6 6" : "m6 2 6 6-6 6"} stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
@@ -72,8 +81,10 @@ function Arrow({ dir, onClick, className = "", style }: { dir: -1 | 1; onClick: 
   );
 }
 
-function Slide({ cs, active, onSelect, innerRef }: { cs: CaseStudy; active: boolean; onSelect: () => void; innerRef?: React.Ref<HTMLDivElement> }) {
+function Slide({ cs, active, playing, onSelect, innerRef }: { cs: CaseStudy; active: boolean; playing: boolean; onSelect: () => void; innerRef?: React.Ref<HTMLDivElement> }) {
   const external = cs.link?.href.startsWith("http");
+  // The frame takes the shape of its recording, so nothing in the preview is cropped.
+  const ratio = cs.media.kind === "video" ? cs.media.ratio : 16 / 10;
   return (
     <div
       ref={innerRef}
@@ -93,8 +104,8 @@ function Slide({ cs, active, onSelect, innerRef }: { cs: CaseStudy; active: bool
             : <Link href={cs.link.href} tabIndex={active ? 0 : -1} className="label mt-6 inline-block text-signal hover:text-slate">{cs.link.label}</Link>
         )}
       </article>
-      <div className="float-late relative order-first h-[210px] w-full overflow-hidden rounded-[28px] border border-white/12 bg-white/5 shadow-[0_30px_80px_rgba(0,0,0,0.45)] sm:h-[300px] sm:rounded-[32px] md:h-[360px] lg:order-none lg:aspect-[4/3] lg:h-auto">
-        <Media media={cs.media} stats={cs.stats} />
+      <div style={{ aspectRatio: ratio }} className="float-late relative order-first w-full overflow-hidden rounded-[28px] border border-white/12 bg-white/5 sm:rounded-[32px] lg:order-none lg:shadow-[0_40px_50px_-30px_rgba(0,0,0,0.6)]">
+        <Media media={cs.media} stats={cs.stats} playing={playing} />
       </div>
     </div>
   );
@@ -106,6 +117,9 @@ export default function WorkCarousel() {
   const [paused, setPaused] = useState(false);
   const [slideW, setSlideW] = useState(0);
   const [trackH, setTrackH] = useState<number | null>(null);
+  const [inView, setInView] = useState(false);
+  const reduceMotion = useReducedMotion();
+  const sectionRef = useRef<HTMLElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
   const activeRef = useRef<HTMLDivElement>(null);
   const wheelLock = useRef(0);
@@ -137,11 +151,21 @@ export default function WorkCarousel() {
     return () => ro.disconnect();
   }, [index, slideW]);
 
+  // Slides differ in height, so advancing while it only peeks in would shift the form under someone typing.
   useEffect(() => {
-    if (paused) return;
+    const el = sectionRef.current;
+    if (!el) return;
+    const io = new IntersectionObserver(([entry]) => setInView(entry.isIntersecting), { rootMargin: "-25% 0px" });
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
+  useEffect(() => {
+    // Hovering is the only way to hold a slide, and touch screens cannot hover, so they move on a swipe or tap instead.
+    if (paused || !inView || reduceMotion || !window.matchMedia("(hover: hover)").matches) return;
     const t = setTimeout(() => go(1), HOLD_MS);
     return () => clearTimeout(t);
-  }, [index, paused, go]);
+  }, [index, paused, inView, reduceMotion, go]);
 
   const onDragEnd = (_: unknown, info: PanInfo) => {
     const swipe = info.offset.x + info.velocity.x * 0.2;
@@ -164,8 +188,9 @@ export default function WorkCarousel() {
 
   return (
     <section
+      ref={sectionRef}
       id="work"
-      className="night-sky relative -mt-10 scroll-mt-6 overflow-hidden rounded-t-[40px] px-5 py-24 shadow-[0_-40px_80px_rgba(0,0,0,0.45)] sm:px-10"
+      className="night-sky relative -mt-10 scroll-mt-6 overflow-clip rounded-t-[40px] px-5 py-24 shadow-[0_-40px_80px_rgba(0,0,0,0.45)] sm:px-10"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
@@ -224,13 +249,13 @@ export default function WorkCarousel() {
               style={{ width: cardW, left: (slideW - cardW) / 2, zIndex: active ? 2 : 1 }}
               className="absolute top-0 h-full"
             >
-              <Slide cs={cs} active={active} onSelect={() => setIndex(i)} innerRef={active ? activeRef : undefined} />
+              <Slide cs={cs} active={active} playing={active && inView && !reduceMotion} onSelect={() => setIndex(i)} innerRef={active ? activeRef : undefined} />
             </motion.div>
           );
         })}
       </motion.div>
 
-      <div className="mt-10 flex justify-center gap-2" role="tablist" aria-label="Case studies">
+      <div className="mt-10 flex justify-center gap-3" role="tablist" aria-label="Case studies">
         {caseStudies.map((c, i) => (
           <button
             key={c.slug}
@@ -238,7 +263,7 @@ export default function WorkCarousel() {
             aria-selected={i === index}
             aria-label={c.title}
             onClick={() => setIndex(i)}
-            className={`h-1.5 rounded-full transition-all ${i === index ? "w-8 bg-white" : "w-3 bg-white/30 hover:bg-white/60"}`}
+            className={`relative h-1.5 rounded-full transition-all before:absolute before:-inset-x-1.5 before:-inset-y-5 ${i === index ? "w-8 bg-white" : "w-3 bg-white/30 hover:bg-white/60"}`}
           />
         ))}
       </div>

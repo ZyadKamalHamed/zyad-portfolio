@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   title: "Zyad Kamal Hamed · Designer, Developer, AI Engineer",
   description:
     "I design and build visual media, websites and automations for businesses, and work as an AI Specialist within a Sydney creative agency.",
-  metadataBase: new URL("https://zyad-portfolio-sage.vercel.app"),
+  metadataBase: new URL("https://www.zyadkamalhamed.com"),
   openGraph: { title: "Zyad Kamal Hamed", description: "Design. Develop. Automate.", images: ["/img/sky-small.jpg"] },
 };
 

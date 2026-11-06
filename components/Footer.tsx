@@ -10,7 +10,7 @@ const site = [
 const elsewhere = [
   { href: "https://github.com/ZyadKamalHamed", label: "GitHub" },
   { href: "https://www.linkedin.com/in/zyadkamalhamed/", label: "LinkedIn" },
-  { href: "mailto:zyad2408@live.com.au", label: "Email" },
+  { href: "mailto:zyadkamalhamed@gmail.com", label: "Email" },
   { href: "/cv/Zyad-Kamal-Hamed-CV.pdf", label: "CV (PDF)", download: true },
 ];
 

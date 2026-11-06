@@ -49,11 +49,12 @@ export default function Nav() {
   const path = usePathname();
   const active = useActiveSection(path);
   const contactActive = active === "contact";
+  const deep = active !== "home" ? "glass-deep" : "";
 
   return (
     <header className="pointer-events-none fixed inset-x-0 top-0 z-50">
       <div className="relative mx-auto flex max-w-[1728px] items-center justify-center px-4 py-4 sm:px-10 sm:py-5">
-        <nav className="glass pointer-events-auto flex h-12 items-center gap-0.5 whitespace-nowrap rounded-full px-1.5 md:h-14 md:gap-2 md:px-3">
+        <nav className={`glass ${deep} pointer-events-auto flex h-12 items-center gap-0.5 whitespace-nowrap rounded-full px-1.5 md:h-14 md:gap-2 md:px-3`}>
           {links.map((l) => (
             <MLink
               key={l.id}
@@ -86,9 +87,12 @@ export default function Nav() {
           href="/#contact"
           aria-label="Contact"
           whileTap={{ scale: 0.94 }}
-          className={`glass label pointer-events-auto absolute right-10 top-1/2 hidden h-14 -translate-y-1/2 items-center rounded-full px-6 text-white transition-colors md:flex ${contactActive ? "bg-white/25" : "hover:bg-white/15"}`}
+          className={`glass pointer-events-auto absolute right-10 top-1/2 hidden h-11 -translate-y-1/2 items-center gap-2 rounded-full pl-5 pr-[18px] font-mono text-[13px] uppercase leading-none tracking-[0.1em] text-white md:flex ${contactActive ? "glass-lit" : `${deep} glass-hover`}`}
         >
-          Contact ↗
+          <span className="-mr-[0.1em]">Contact</span>
+          <svg viewBox="0 0 10 10" width="9" height="9" fill="none" aria-hidden>
+            <path d="M2 8 8 2M3 2h5v5" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
         </MLink>
       </div>
     </header>

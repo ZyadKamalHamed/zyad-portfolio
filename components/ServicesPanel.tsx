@@ -22,8 +22,8 @@ export default function ServicesPanel() {
             <p className="eyebrow text-white/50">0{i + 1}</p>
             <h2 className="font-display mt-3 text-[clamp(30px,3vw,40px)] font-light uppercase tracking-wide">{s.title}</h2>
             <p className="mt-3 text-lg text-white/90">{s.tagline}</p>
-            <p className="mt-3 max-w-[420px] text-[15px] leading-relaxed text-white/60">{s.copy}</p>
-            <ul className="mt-8">
+            <p className="mb-8 mt-3 max-w-[420px] flex-1 text-[15px] leading-relaxed text-white/60">{s.copy}</p>
+            <ul>
               {s.items.map((it) => (
                 <li key={it} className="rule py-4 text-[15px] text-white/85">{it}</li>
               ))}

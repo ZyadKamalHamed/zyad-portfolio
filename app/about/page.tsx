@@ -8,7 +8,7 @@ export const metadata = { title: "About · Zyad Kamal Hamed" };
 
 function Photo({ entry }: { entry: TimelineEntry }) {
   return (
-    <div className={`grid aspect-[200/214] w-[160px] shrink-0 place-items-center overflow-hidden border border-white/70 lg:w-[200px] ${entry.image?.fit === "contain" ? "bg-white p-6" : "bg-white/[0.06]"}`}>
+    <div className={`grid aspect-[200/214] w-[160px] shrink-0 place-items-center overflow-hidden border border-white/70 xl:w-[200px] ${entry.image?.fit === "contain" ? "bg-white p-6" : "bg-white/[0.06]"}`}>
       {entry.image
         ? <Image src={entry.image.src} alt={entry.image.alt} width={200} height={214} className={`h-full w-full ${entry.image.fit === "contain" ? "object-contain" : "object-cover"}`} />
         : <span className="eyebrow text-[10px] text-white/50">Add image</span>}
@@ -43,10 +43,10 @@ function resumeSize() {
 // One primary (solid white, matches the contact form's submit) and one quieter echo at the end of the rail.
 function ResumeLink({ variant, id }: { variant: "primary" | "quiet"; id: string }) {
   const size = resumeSize();
-  const meta = ["PDF", `${resume.pages} pages`, size, `Updated ${resume.updated}`].filter((m): m is string => Boolean(m));
+  const facts = ["PDF", `${resume.pages} pages`, size].filter(Boolean).join(" · ");
   const pill = variant === "primary"
-    ? "bg-white text-slate hover:bg-white/90"
-    : "glass-on-night text-white hover:bg-white/15";
+    ? "border-white bg-white text-slate hover:border-white/90 hover:bg-white/90"
+    : "glass-on-night text-white";
   return (
     <div className={`flex flex-col gap-3 ${variant === "primary" ? "items-center" : "items-start lg:items-center"}`}>
       <a
@@ -54,15 +54,17 @@ function ResumeLink({ variant, id }: { variant: "primary" | "quiet"; id: string 
         download={resume.filename}
         type="application/pdf"
         aria-describedby={id}
-        className={`label inline-flex items-center rounded-full px-8 py-4 transition-colors ${pill}`}
+        className={`label inline-flex h-[52px] items-center justify-center gap-2.5 rounded-full border-[1.5px] px-8 transition-colors ${pill}`}
       >
-        Download CV ↓
+        <span className="-mr-[0.1em]">Download CV</span>
+        <svg viewBox="0 0 10 10" width="10" height="10" fill="none" aria-hidden>
+          <path d="M5 1v8M1.75 5.75 5 9l3.25-3.25" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
       </a>
-      {/* Each segment is unbreakable so narrow screens wrap at a separator, never inside the date. */}
+      {/* Phones break before the date, so no line ends on a stray separator. */}
       <p id={id} className={`eyebrow text-white/55 ${variant === "primary" ? "text-center" : "lg:text-center"}`}>
-        {meta.map((m, i) => (
-          <span key={m}>{i > 0 && " · "}<span className="whitespace-nowrap">{m}</span></span>
-        ))}
+        {facts}
+        <span className="block sm:inline"><span className="hidden sm:inline"> · </span>Updated {resume.updated}</span>
       </p>
     </div>
   );
@@ -83,13 +85,13 @@ export default function AboutPage() {
 
         {/* Phones: one column on a left rail. Desktop: centre rail, entries alternate sides. */}
         <ol className="relative mt-20 flex flex-col gap-14 lg:gap-16">
-          <span className="absolute left-[5px] top-0 h-full w-px bg-white/35 lg:left-1/2 lg:-translate-x-1/2" aria-hidden />
+          <span className="absolute bottom-0 left-[5.5px] top-[9px] w-px bg-white/35 lg:left-1/2 lg:top-4 lg:-translate-x-1/2" aria-hidden />
           {timeline.map((t, i) => {
             const left = i % 2 === 0;
             return (
               <li key={`${t.year}-${t.title}`} className="relative lg:grid lg:grid-cols-2">
                 <div className="flex flex-col gap-4 pl-8 lg:hidden">
-                  <Dot className="absolute left-0 top-1 h-3 w-3" />
+                  <Dot className="absolute left-0 top-[3px] h-3 w-3" />
                   <p className="eyebrow text-white/70">{t.year}</p>
                   <Photo entry={t} />
                   <Copy entry={t} align="left" />
@@ -99,9 +101,10 @@ export default function AboutPage() {
                     <div className="hidden items-start justify-end gap-4 lg:flex">
                       <Copy entry={t} align="right" />
                       <Photo entry={t} />
-                      <div className="-mr-3 flex items-start gap-3 pt-1">
-                        <p className="eyebrow text-white/70">{t.year}</p>
-                        <Dot className="mt-[1px] h-6 w-6" />
+                      {/* Every year gets the width of the longest label, so the photos line up down the rail. */}
+                      <div className="-mr-3 flex shrink-0 items-center gap-3 pt-1">
+                        <p className="eyebrow w-20 whitespace-nowrap text-right text-white/70">{t.year}</p>
+                        <Dot className="h-6 w-6" />
                       </div>
                     </div>
                     <div className="hidden lg:block" />
@@ -110,9 +113,9 @@ export default function AboutPage() {
                   <>
                     <div className="hidden lg:block" />
                     <div className="hidden items-start gap-4 lg:flex">
-                      <div className="-ml-3 flex items-start gap-3 pt-1">
-                        <Dot className="mt-[1px] h-6 w-6" />
-                        <p className="eyebrow text-white/70">{t.year}</p>
+                      <div className="-ml-3 flex shrink-0 items-center gap-3 pt-1">
+                        <Dot className="h-6 w-6" />
+                        <p className="eyebrow w-20 whitespace-nowrap text-white/70">{t.year}</p>
                       </div>
                       <Photo entry={t} />
                       <Copy entry={t} align="left" />
@@ -127,8 +130,8 @@ export default function AboutPage() {
         {/* The rail ends in the document itself, so a reader who has scrolled the whole story does not have to go back up.
             Sits outside the list so the rail stops at the dot instead of running on behind the button. */}
         <div className="relative mt-14 flex flex-col gap-5 pl-8 lg:mt-16 lg:items-center lg:pl-0 lg:text-center">
-          <span className="absolute -top-14 left-[5px] h-[3.75rem] w-px bg-white/35 lg:-top-16 lg:left-1/2 lg:h-16 lg:-translate-x-1/2" aria-hidden />
-          <Dot className="absolute left-0 top-1 h-3 w-3 lg:static lg:h-6 lg:w-6" />
+          <span className="absolute -top-14 left-[5.5px] h-16 w-px bg-white/35 lg:-top-16 lg:left-1/2 lg:h-16 lg:-translate-x-1/2" aria-hidden />
+          <Dot className="absolute left-0 top-1.5 h-3 w-3 lg:static lg:h-6 lg:w-6" />
           <p className="max-w-[300px] text-[15px] leading-relaxed text-white/78 lg:max-w-[360px]">{resume.railIntro}</p>
           <div className="lg:mt-1">
             <ResumeLink variant="quiet" id="cv-meta-rail" />

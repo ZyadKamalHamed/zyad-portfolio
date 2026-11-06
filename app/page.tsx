@@ -17,7 +17,7 @@ export default function Home() {
               <p className="eyebrow text-white/50">Contact</p>
               <h2 className="font-display mt-3 text-[clamp(40px,6vw,64px)] font-light leading-none">Let&apos;s build.</h2>
               <p className="mt-6 max-w-[420px] leading-relaxed text-white/75">{contactIntro}</p>
-              <p className="mt-8 text-sm text-white/50">Prefer email? <a href="mailto:zyad2408@live.com.au" className="text-white/80 underline-offset-4 hover:underline">zyad2408@live.com.au</a></p>
+              <p className="mt-8 text-sm text-white/50">Prefer email? <a href="mailto:zyadkamalhamed@gmail.com" className="text-white/80 underline-offset-4 hover:underline">zyadkamalhamed@gmail.com</a></p>
             </div>
             <ContactForm />
           </div>
